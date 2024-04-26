@@ -46,5 +46,30 @@ public static class Treatments
 
     public static bool IsVowel(char value) => Vowels.Contains(value.Normalize());
     public static bool IsConsonant(char value) => Consonants.Contains(value.Normalize());
+
+    public static Int16 NumerologicalResonance(this Int16 value) {
+        var result = value % 9;
+        return result==0? (Int16)9 :(Int16)result;
+    }
+
+    public static Int16 NumerologicalResonance(this DateOnly date)
+    {
+        var day = ((Int16)date.Day).NumerologicalResonance();
+        var month = ((Int16)date.Month).NumerologicalResonance();
+        var year = ((Int16)date.Year).NumerologicalResonance();
+
+        var sum = day + month + year;
+        var key33 = DigitAggregate(date.Day.ToString()+ date.Month.ToString()+ date.Year.ToString());
+
+        if (key33 % 33 == 0) return 33;
+        
+        var key22 = key33 > 22? DigitAggregate(key33.ToString()) : key33;
+
+        if (key22 % 22 == 0) return 22;
+
+        var key11 = key33 > 11 ? DigitAggregate(key33.ToString()) : key33;
+        if (key11 % 11 == 0) return 11;
+        return ((Int16)sum).NumerologicalResonance();
+    }
 }
 

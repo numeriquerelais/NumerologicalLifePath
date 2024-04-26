@@ -177,5 +177,42 @@ namespace NumerologicalLifePath.Tests
         {
             Check.That(Treatments.IsConsonant(letter)).IsFalse();
         }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        [TestCase(5, 5)]
+        [TestCase(6, 6)]
+        [TestCase(7, 7)]
+        [TestCase(8, 8)]
+        [TestCase(9, 9)]
+        [TestCase(10, 1)]
+        [TestCase(29, 2)]
+        [TestCase(48, 3)]
+        [TestCase(67, 4)]
+        [TestCase(86, 5)]
+        [TestCase(15, 6)]
+        [TestCase(34, 7)]
+        [TestCase(53, 8)]
+        [TestCase(72, 9)]
+        [TestCase(256, 4)]
+        public void Should_Get_Numerological_Resonance_Of_Digit(Int16 value, Int16 expectedResult)
+        {
+            Check.That(value.NumerologicalResonance()).Equals(expectedResult);
+        }
+
+
+        [TestCase(8, 2, 1968, 7)]
+        [TestCase(20, 4, 1985, 11)]
+        [TestCase(9, 6, 1996, 4)]
+        [TestCase(10, 9, 1990, 11)]
+        [TestCase(24, 2, 1978, 33)]
+        [TestCase(29, 4, 2014, 22)]
+        public void Should_Get_Numerological_Resonance_Of_Date(Int16 day, Int16 month, Int16 year, Int16 expectedResult)
+        {
+            var date = new DateOnly(year, month, day);
+            Check.That(date.NumerologicalResonance()).Equals(expectedResult);
+        }
     }
 }

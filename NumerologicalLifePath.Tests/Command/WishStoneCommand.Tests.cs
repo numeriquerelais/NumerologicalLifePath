@@ -11,7 +11,7 @@ public sealed class WishStoneCommandTests
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new WishStoneCommand(clt);
+        var command = new WishStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -21,10 +21,20 @@ public sealed class WishStoneCommandTests
     {
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly());
 
-        var command = new WishStoneCommand(clt);
+        var command = new WishStoneCommand() { Client = clt };
 
         Check.ThatCode(() => command.Execute())
                .Throws<ArgumentException>()
                .WithMessage("No Vowel found.");
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_Client()
+    {
+        var command = new WishStoneCommand();
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<NullReferenceException>()
+               .WithMessage("Object reference not set to an instance of an object.");
     }
 }

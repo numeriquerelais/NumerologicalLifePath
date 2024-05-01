@@ -1,4 +1,5 @@
 ﻿using NFluent;
+using NumerologicalLifePath.Commands;
 using NumerologicalLifePath.CompoundCommands;
 
 namespace NumerologicalLifePath.Tests.CompoundCommands;
@@ -10,7 +11,7 @@ public sealed class ExpressionStoneCompoundCommandTests
     public void Should_Execute_Commands(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new ExpressionStoneCompoundCommand(clt);
+        var command = new ExpressionStoneCompoundCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -21,7 +22,7 @@ public sealed class ExpressionStoneCompoundCommandTests
     public void Should_Execute_Commands_Not_Reduced(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new ExpressionStoneCompoundCommand(clt, false);
+        var command = new ExpressionStoneCompoundCommand(false) { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -31,9 +32,19 @@ public sealed class ExpressionStoneCompoundCommandTests
     {
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly());
 
-        var command = new ExpressionStoneCompoundCommand(clt);
+        var command = new ExpressionStoneCompoundCommand() { Client = clt };
 
         Check.ThatCode(() => command.Execute())
                .Throws<Exception>();
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_Client()
+    {
+        var command = new ExpressionStoneCompoundCommand();
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<NullReferenceException>()
+               .WithMessage("Object reference not set to an instance of an object.");
     }
 }

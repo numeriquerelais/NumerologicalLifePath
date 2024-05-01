@@ -1,10 +1,10 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class GlobalResonanceStoneCommand(Client client) : ACommand(client)
+public sealed class GlobalResonanceStoneCommand() : ACommand()
 {
     public override void Execute()
     {
-        _result = client.BirthDate.NumerologicalResonance();
+        _result = Client.BirthDate.NumerologicalResonance();
     }
 
     protected override char[] GetInputDatas() => throw new NotImplementedException();

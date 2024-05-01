@@ -15,8 +15,18 @@ public sealed class GlobalResonanceStoneCommandTests
     {
         var birthDate = Convert.ToDateTime(strBirthDate).Date;
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
-        var command = new GlobalResonanceStoneCommand(clt);
+        var command = new GlobalResonanceStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_Client()
+    {
+        var command = new GlobalResonanceStoneCommand();
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<NullReferenceException>()
+               .WithMessage("Object reference not set to an instance of an object.");
     }
 }

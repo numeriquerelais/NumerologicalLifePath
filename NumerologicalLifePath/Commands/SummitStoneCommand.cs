@@ -1,6 +1,6 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class SummitStoneCommand(Client client) : ACommand(client)
+public sealed class SummitStoneCommand() : ACommand()
 {
     public override void Execute()
     {
@@ -14,10 +14,10 @@ public sealed class SummitStoneCommand(Client client) : ACommand(client)
 
         try
         {
-            foreach (var firstName in _client.FirstNames)
+            foreach (var firstName in Client.FirstNames)
                 result.Add(firstName[^1]);
 
-            foreach (var lastName in _client.LastNames)
+            foreach (var lastName in Client.LastNames)
                 result.Add(lastName[^1]);
         }
         catch (IndexOutOfRangeException)

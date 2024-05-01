@@ -2,13 +2,13 @@
 
 namespace NumerologicalLifePath.CompoundCommands
 {
-    public sealed class TouchStoneCompoundCommand(Client client, bool reduceAggregate=true) : 
+    public sealed class TouchStoneCompoundCommand(bool reduceAggregate=true) : 
         ACompoundCommand(new List<ICommand>() {
-            new ExpressionStoneCompoundCommand(client, false),
-            new FoundationStoneCommand(client), 
-            new SummitStoneCommand(client),
-            new CallingStoneCommand(client, false),
-            new PersonnalityStoneCommand(client, false),            
+            new ExpressionStoneCompoundCommand(false),
+            new FoundationStoneCommand(), 
+            new SummitStoneCommand(),
+            new CallingStoneCommand(false),
+            new PersonnalityStoneCommand(false),            
         }, reduceAggregate)
     {}
 }

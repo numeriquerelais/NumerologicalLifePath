@@ -1,6 +1,6 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class WishStoneCommand(Client client) : ACommand(client)
+public sealed class WishStoneCommand() : ACommand()
 {
     public override void Execute()
     {
@@ -14,10 +14,10 @@ public sealed class WishStoneCommand(Client client) : ACommand(client)
 
         try
         {
-            foreach (var firstName in _client.FirstNames)
+            foreach (var firstName in Client.FirstNames)
                 result.Add(firstName.ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray()[0]);
 
-            foreach (var lastName in _client.LastNames)
+            foreach (var lastName in Client.LastNames)
                 result.Add(lastName.ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray()[0]);
         }
         catch (IndexOutOfRangeException)

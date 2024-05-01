@@ -1,6 +1,6 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class FoundationStoneCommand(Client client) : ACommand(client)
+public sealed class FoundationStoneCommand() : ACommand()
 {
     public override void Execute()
     {
@@ -13,10 +13,10 @@ public sealed class FoundationStoneCommand(Client client) : ACommand(client)
         var result = new List<char>();
             
         try { 
-            foreach (var firstName in _client.FirstNames)
+            foreach (var firstName in Client.FirstNames)
                 result.Add(firstName[0]);
 
-            foreach (var lastName in _client.LastNames)
+            foreach (var lastName in Client.LastNames)
                 result.Add(lastName[0]);
         }
         catch(IndexOutOfRangeException) {

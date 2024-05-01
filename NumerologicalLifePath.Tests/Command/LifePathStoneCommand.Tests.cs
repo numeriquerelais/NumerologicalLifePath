@@ -15,8 +15,18 @@ public sealed class LifePathStoneCommandTests
     {
         var birthDate = Convert.ToDateTime(strBirthDate).Date;
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
-        var command = new LifePathStoneCommand(clt);
+        var command = new LifePathStoneCommand() { Client = clt};
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_Client()
+    {
+        var command = new LifePathStoneCommand();
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<NullReferenceException>()
+               .WithMessage("Object reference not set to an instance of an object.");
     }
 }

@@ -6,7 +6,14 @@ public abstract class ACompoundCommand(List<ICommand> commands, bool reduceAggre
 
     protected Int16 _result = -1;
 
-    public Int16 Result { get => _result; }    
+    public Int16 Result { get => _result; }
+
+    public Client Client { 
+        set { 
+            foreach (var command in _commands) 
+                (command.Client) = value;
+        } 
+    }
 
     public void Execute() {
         Int16 results = 0;

@@ -1,6 +1,6 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class LifePathStoneCommand(Client client) : ACommand(client)
+public sealed class LifePathStoneCommand() : ACommand()
 {
     public override void Execute()
     {
@@ -13,9 +13,9 @@ public sealed class LifePathStoneCommand(Client client) : ACommand(client)
         var sum = 0;
         var result = new List<char>();
 
-        sum += _client.BirthDate.Day;
-        sum += _client.BirthDate.Month;
-        sum += _client.BirthDate.Year;
+        sum += Client.BirthDate.Day;
+        sum += Client.BirthDate.Month;
+        sum += Client.BirthDate.Year;
 
         foreach (var digit in sum.ToString())
             result.Add(digit);

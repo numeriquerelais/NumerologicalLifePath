@@ -2,10 +2,10 @@
 
 namespace NumerologicalLifePath.CompoundCommands
 {
-    public sealed class ExpressionStoneCompoundCommand(Client client, bool reduceAggregate=true) : 
+    public sealed class ExpressionStoneCompoundCommand(bool reduceAggregate=true) : 
         ACompoundCommand(new List<ICommand>() { 
-            new CallingStoneCommand(client, false), 
-            new PersonnalityStoneCommand(client, false) 
+            new CallingStoneCommand(false), 
+            new PersonnalityStoneCommand(false)
         }, reduceAggregate)
     {        
     }

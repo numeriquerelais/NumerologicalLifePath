@@ -19,7 +19,7 @@ public sealed class EarthResonanceStoneCommandTests
     {
         var birthDate = Convert.ToDateTime(strBirthDate).Date;
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
-        var command = new EarthResonanceStoneCommand(clt);
+        var command = new EarthResonanceStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }

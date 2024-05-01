@@ -12,7 +12,7 @@ public sealed class CallingStoneCommandTests
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new CallingStoneCommand(clt);
+        var command = new CallingStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -23,7 +23,7 @@ public sealed class CallingStoneCommandTests
     public void Should_Execute_Command_With_Not_Reduced_Result(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new CallingStoneCommand(clt, false);
+        var command = new CallingStoneCommand(false) { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -33,7 +33,7 @@ public sealed class CallingStoneCommandTests
     {
         Client clt = new([.. string.Empty.Split("")], [.. string.Empty.Split("")], new DateOnly());
 
-        var command = new CallingStoneCommand(clt);
+        var command = new CallingStoneCommand() { Client = clt };
 
         Check.ThatCode(() => command.Execute())
                .Throws<ArgumentException>()

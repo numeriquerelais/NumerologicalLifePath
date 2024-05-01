@@ -1,6 +1,6 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class CallingStoneCommand(Client client, bool reduceAggregate = true) : ACommand(client)
+public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand()
 {
     private readonly bool _reduceAggregate = reduceAggregate;
     public override void Execute()
@@ -15,7 +15,7 @@ public sealed class CallingStoneCommand(Client client, bool reduceAggregate = tr
 
     protected override char[] GetInputDatas()
     {
-        var letters = (string.Join("", _client.FirstNames) + string.Join("", _client.LastNames)).ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray();
+        var letters = (string.Join("", Client.FirstNames) + string.Join("", Client.LastNames)).ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray();
         return [.. letters];
     }
 }

@@ -43,9 +43,49 @@ public static class Treatments
 
     private static readonly char[] Vowels = ['A', 'E', 'I', 'O', 'U', 'Y'];
     private static readonly char[] Consonants = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R','S','T','V', 'W', 'X','Z'];
+    private static readonly string[] Stones = [
+        "Pink Quartz",
+        "Red Jasper",
+        "Chalcedony",
+        "Jade",
+        "Emerald",
+        "Garnet",
+        "Citrine",
+        "Obsidian",
+        "Aquamarine",
+        "Rhodochrosite",
+        "Carnelian",
+        "Amber",
+        "Hematite",
+        "Amethyst",
+        "Malachite",
+        "Opal",
+        "Turquoise",
+        "Moonstone",
+        "Topaz",
+        "Lapis Lazuli",
+        "Tourmaline",
+        "Rock Crystal",
+        "Azurite",
+        "Amazonite",
+        "Tiger's Eye",
+        "Pyrite",
+        "Fluorite",
+        "Pearl",
+        "Sodalite",
+        "Smoky Quartz",
+        "Moonstone",
+        "Mokaïte",
+        "Tourmalinated Quartz",
+        ];
 
     public static bool IsVowel(char value) => Vowels.Contains(value.Normalize());
     public static bool IsConsonant(char value) => Consonants.Contains(value.Normalize());
+
+    public static string ConvertToStone(this Int16 value)
+    {
+        return Stones[value-1];
+    }
 
     public static Int16 NumerologicalResonance(this Int16 value) {
         var result = value % 9;

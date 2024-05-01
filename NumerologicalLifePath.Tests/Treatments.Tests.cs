@@ -214,5 +214,24 @@ namespace NumerologicalLifePath.Tests
             var date = new DateOnly(year, month, day);
             Check.That(date.NumerologicalResonance()).Equals(expectedResult);
         }
+
+        [TestCase(1, "Pink Quartz")]
+        [TestCase(29, "Sodalite")]
+        [TestCase(20, "Lapis Lazuli")]
+        [TestCase(33, "Tourmalinated Quartz")]
+        public void Should_Convert_Number_To_Stone(Int16 number, string expectedStoneName)
+        {
+            Check.That(number.ConvertToStone()).Equals(expectedStoneName);
+        }
+
+        [TestCase(0)]
+        [TestCase(-1)]
+        [TestCase(34)]
+        public void Should_Not_Convert_Number_To_Stone(Int16 number)
+        {
+            Check.ThatCode(() => number.ConvertToStone())
+                .Throws<IndexOutOfRangeException>()
+                .WithMessage("Index was outside the bounds of the array.");
+        }
     }
 }

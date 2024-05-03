@@ -7,7 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumerologicalLifePath", "Nu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumerologicalLifePath.Tests", "NumerologicalLifePath.Tests\NumerologicalLifePath.Tests.csproj", "{791FB3E3-26EB-4177-A377-8F468D0E7882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumerologicalLifePath.Application", "NumerologicalLifePath.Application\NumerologicalLifePath.Application.csproj", "{32DDC441-3254-4014-A1B4-0FE120179316}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F2B06FEC-E8FA-45FB-A468-E1B0BD51BB8B}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-validation.yml = .github\workflows\build-validation.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +26,6 @@ Global
 		{791FB3E3-26EB-4177-A377-8F468D0E7882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{791FB3E3-26EB-4177-A377-8F468D0E7882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{791FB3E3-26EB-4177-A377-8F468D0E7882}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32DDC441-3254-4014-A1B4-0FE120179316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32DDC441-3254-4014-A1B4-0FE120179316}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32DDC441-3254-4014-A1B4-0FE120179316}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32DDC441-3254-4014-A1B4-0FE120179316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
+using System.Globalization;
 
 namespace NumerologicalLifePath.Tests.Command;
 
@@ -13,7 +14,10 @@ public sealed class LifePathStoneCommandTests
     [TestCase("29/12/9938", 7)]
     public void Should_Execute_Command(string strBirthDate, int expectedResult)
     {
-        var birthDate = Convert.ToDateTime(strBirthDate).Date;
+        DateTime.TryParseExact(strBirthDate, "dd/MM/yyyy",
+                           CultureInfo.InvariantCulture,
+                           DateTimeStyles.None,
+                           out var birthDate);
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
         var command = new LifePathStoneCommand() { Client = clt};
         command.Execute();

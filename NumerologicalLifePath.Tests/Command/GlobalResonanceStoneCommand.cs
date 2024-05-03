@@ -1,19 +1,23 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
+using System.Globalization;
 
 namespace NumerologicalLifePath.Tests.Command;
 
 public sealed class GlobalResonanceStoneCommandTests
 {
-    [TestCase("8/2/1968", 7)]
-    [TestCase("20/4/1985", 11)]
-    [TestCase("9/6/1996", 4)]
-    [TestCase("10/9/1990", 11)]
-    [TestCase("24/2/1978", 33)]
-    [TestCase("29/4/2014", 22)]
+    [TestCase("08/02/1968", 7)]
+    [TestCase("20/04/1985", 11)]
+    [TestCase("09/06/1996", 4)]
+    [TestCase("10/09/1990", 11)]
+    [TestCase("24/02/1978", 33)]
+    [TestCase("29/04/2014", 22)]
     public void Should_Execute_Command(string strBirthDate, int expectedResult)
     {
-        var birthDate = Convert.ToDateTime(strBirthDate).Date;
+        DateTime.TryParseExact(strBirthDate, "dd/MM/yyyy",
+                           CultureInfo.InvariantCulture,
+                           DateTimeStyles.None,
+                           out var birthDate);
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
         var command = new GlobalResonanceStoneCommand() { Client = clt };
         command.Execute();

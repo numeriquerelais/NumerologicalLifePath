@@ -14,7 +14,7 @@ public static class Treatments
         if (!Char.IsAsciiLetter(tmp)) {
             tmp = value.Normalize();
         }
-        var numTmp = Convert.ToInt32(tmp);
+        var numTmp = Convert.ToInt16(tmp);
         if (numTmp < min || numTmp > max)
             throw new ArgumentOutOfRangeException($"{value} is not a letter");
         

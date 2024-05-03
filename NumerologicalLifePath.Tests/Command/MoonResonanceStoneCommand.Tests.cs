@@ -28,18 +28,21 @@ public sealed class MoonResonanceStoneCommandTests
     [TestCase("12/05/1990", 3)]
     [TestCase("11/05/1990", 2)]
     [TestCase("10/05/1990", 1)]
-    [TestCase("9/05/1990", 9)]
-    [TestCase("8/05/1990", 8)]
-    [TestCase("7/05/1990", 7)]
-    [TestCase("6/05/1990", 6)]
-    [TestCase("5/05/1990", 5)]
-    [TestCase("4/05/1990", 4)]
-    [TestCase("3/05/1990", 3)]
-    [TestCase("2/05/1990", 2)]
-    [TestCase("1/05/1990", 1)]
+    [TestCase("09/05/1990", 9)]
+    [TestCase("08/05/1990", 8)]
+    [TestCase("07/05/1990", 7)]
+    [TestCase("06/05/1990", 6)]
+    [TestCase("05/05/1990", 5)]
+    [TestCase("04/05/1990", 4)]
+    [TestCase("03/05/1990", 3)]
+    [TestCase("02/05/1990", 2)]
+    [TestCase("01/05/1990", 1)]
     public void Should_Execute_Command(string strBirthDate, int expectedResult)
     {
-        var birthDate = DateTime.Parse(strBirthDate, CultureInfo.CreateSpecificCulture("fr-FR"));
+        DateTime.TryParseExact(strBirthDate, "dd/MM/yyyy",
+                           CultureInfo.InvariantCulture,
+                           DateTimeStyles.None,
+                           out var birthDate);
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
         var command = new MoonResonanceStoneCommand() { Client = clt };
         command.Execute();

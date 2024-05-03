@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
+using System.Globalization;
 
 namespace NumerologicalLifePath.Tests.Command;
 
@@ -38,7 +39,7 @@ public sealed class MoonResonanceStoneCommandTests
     [TestCase("1/05/1990", 1)]
     public void Should_Execute_Command(string strBirthDate, int expectedResult)
     {
-        var birthDate = Convert.ToDateTime(strBirthDate).Date;
+        var birthDate = DateTime.Parse(strBirthDate, CultureInfo.CreateSpecificCulture("fr-FR"));
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
         var command = new MoonResonanceStoneCommand() { Client = clt };
         command.Execute();

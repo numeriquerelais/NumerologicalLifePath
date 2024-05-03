@@ -11,14 +11,14 @@ public static class Treatments
         var min = Convert.ToInt16('A');
         var max = Convert.ToInt16('Z');
 
-        if (!Char.IsAsciiLetter(value)) {
+        if (!Char.IsAsciiLetter(tmp)) {
             tmp = value.Normalize();
         }
-        var numTmp = Convert.ToInt16(Char.ToUpper(tmp));
+        var numTmp = Convert.ToInt32(tmp);
         if (numTmp < min || numTmp > max)
             throw new ArgumentOutOfRangeException($"{value} is not a letter");
         
-        return (Int16)(Convert.ToInt16(Char.ToUpper(tmp) - Convert.ToInt16('A')) % 9 + 1);
+        return (Int16)(Convert.ToInt16(tmp - Convert.ToInt16('A')) % 9 + 1);
     }    
 
     public static Int16 CharAggregate(char[] values, bool reduce=true) {

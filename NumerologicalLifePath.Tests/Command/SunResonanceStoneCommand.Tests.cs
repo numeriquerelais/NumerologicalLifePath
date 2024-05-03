@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
+using System.Globalization;
 
 namespace NumerologicalLifePath.Tests.Command;
 
@@ -20,7 +21,7 @@ public sealed class SunResonanceStoneCommandTests
     [TestCase("1/12/1990", 3)]
     public void Should_Execute_Command(string strBirthDate, int expectedResult)
     {
-        var birthDate = Convert.ToDateTime(strBirthDate).Date;
+        var birthDate = DateTime.Parse(strBirthDate, CultureInfo.CreateSpecificCulture("fr-FR"));
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
         var command = new SunResonanceStoneCommand() { Client = clt };
         command.Execute();

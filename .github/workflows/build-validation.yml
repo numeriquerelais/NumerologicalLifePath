@@ -71,13 +71,16 @@ jobs:
       - name: Install Dotnet Coverage
         run : dotnet tool install --global dotnet-coverage
 
+      - name: Install dependencies
+        run: dotnet restore
+
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"numeriquerelais_NumerologicalLifePath" /o:"numeriquerelais" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build --no-incremental
-          dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"numeriquerelais_NumerologicalLifePath" /o:"numeriquerelais" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.verbose=true" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          dotnet build --configuration Release --no-restore --no-incremental
+          dotnet-coverage collect 'dotnet test --no-restore --verbosity normal' -f xml -o 'coverage.xml'
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

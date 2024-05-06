@@ -1,6 +1,11 @@
 # NumerologicalLifePath
 
 [![build and test](https://github.com/numeriquerelais/NumerologicalLifePath/actions/workflows/build-validation.yml/badge.svg?branch=main)](https://github.com/numeriquerelais/NumerologicalLifePath/actions/workflows/build-validation.yml)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=bugs)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=bugs)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=bugs)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=bugs)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=bugs)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
 
 # Samples
 [SonarCloud YML](https://stackoverflow.com/questions/58871955/sonarcloud-code-coverage-remains-0-0-in-github-actions-build)

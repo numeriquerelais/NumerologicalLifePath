@@ -1,18 +1,19 @@
-# Numérologie : le chemin de vie et la résonance vibratoire
-[![build and test](https://github.com/numeriquerelais/NumerologicalLifePath/actions/workflows/build-validation.yml/badge.svg?branch=main)](https://github.com/numeriquerelais/NumerologicalLifePath/actions/workflows/build-validation.yml) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=bugs)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=coverage)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
+# NumÃ©rologie : le chemin de vie et la rÃ©sonance vibratoire
+[![build and test](https://github.com/numeriquerelais/NumerologicalLifePath/actions/workflows/build-validation.yml/badge.svg?branch=main)](https://github.com/numeriquerelais/NumerologicalLifePath/actions/workflows/build-validation.yml) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=bugs)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=coverage)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=numeriquerelais_NumerologicalLifePath&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath) 
+
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=numeriquerelais_NumerologicalLifePath)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
 
-Le but de ce projet est de prendre du plaisir et de faire un travail de qualité en mettant en place :
-- Les règles de calcul numérologique à partir de la date de naissance et des noms et prénoms d'une personne pour déterminer :
+Le but de ce projet est de prendre du plaisir et de faire un travail de qualitÃ© en mettant en place :
+- Les rÃ¨gles de calcul numÃ©rologique Ã  partir de la date de naissance et des noms et prÃ©noms d'une personne pour dÃ©terminer :
   -  les pierres de son chemin de vie 
-  -  les chiffres en résonance vibratoire avec sa date de naissance
-- Découvrir :
+  -  les chiffres en rÃ©sonance vibratoire avec sa date de naissance
+- DÃ©couvrir :
   - la mise en place dans github d'une chaine de github actions
-  - l'interpréteur de ligne de commande .Net
+  - l'interprÃ©teur de ligne de commande .Net
   - C# 8
 
 
-## Règles
+## RÃ¨gles
 ### Table de correspondance lettre - chiffre
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -20,14 +21,14 @@ Le but de ce projet est de prendre du plaisir et de faire un travail de qualité 
 | J | K | L | M | N | O | P | Q | R |
 | S | T | U | V | W | X | Y | Z |  |
 
-### Les règles de calcul du chemin de vie
-[Documentation n°1](https://www.chakras-shop.com/bien-etre/lithotherapie/bracelet-chemin-de-vie/)
-[Documentation n°2](http://bijouxlithotherapie.eklablog.com/calcul-des-pierres-du-chemin-de-vie-c29433368)
+### Les rÃ¨gles de calcul du chemin de vie
+[Documentation nÂ°1](https://www.chakras-shop.com/bien-etre/lithotherapie/bracelet-chemin-de-vie/)
+[Documentation nÂ°2](http://bijouxlithotherapie.eklablog.com/calcul-des-pierres-du-chemin-de-vie-c29433368)
 
-### Résonance vibratoire
-[Caractéristiques des chiffres](https://www.france-mineraux.fr/numerologie/chiffres/)
+### RÃ©sonance vibratoire
+[CaractÃ©ristiques des chiffres](https://www.france-mineraux.fr/numerologie/chiffres/)
 
-## Ressources complémentaires
+## Ressources complÃ©mentaires
 ### Documentation technique
 [Command Line](https://learn.microsoft.com/fr-fr/dotnet/standard/commandline/get-started-tutorial)
 [SonarCloud YML](https://stackoverflow.com/questions/58871955/sonarcloud-code-coverage-remains-0-0-in-github-actions-build)

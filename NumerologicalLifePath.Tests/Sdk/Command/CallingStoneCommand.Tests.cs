@@ -1,7 +1,7 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
 
-namespace NumerologicalLifePath.Tests.Command;
+namespace NumerologicalLifePath.Sdk.Command.Tests;
 
 public sealed class CallingStoneCommandTests
 {

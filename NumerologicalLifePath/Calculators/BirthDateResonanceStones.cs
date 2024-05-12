@@ -2,9 +2,9 @@
 
 namespace NumerologicalLifePath.Calculators;
 
-public sealed class BithDateResonanceStones : ACalculator
+public sealed class BirthDateResonanceStones : ACalculator
 {
-    public BithDateResonanceStones() :
+    public BirthDateResonanceStones() :
         base(new Calculator([
             new GlobalResonanceStoneCommand(),
             new MoonResonanceStoneCommand(),

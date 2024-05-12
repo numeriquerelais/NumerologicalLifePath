@@ -1,14 +1,12 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
 using System.Globalization;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace NumerologicalLifePath.Tests.Command;
+namespace NumerologicalLifePath.Sdk.Command.Tests;
 
 public sealed class SunResonanceStoneCommandTests
 {
-    
+
     [TestCase("01/01/1990", 1)]
     [TestCase("01/02/1990", 2)]
     [TestCase("01/03/1990", 3)]

@@ -14,10 +14,10 @@ public sealed class WishStoneCommand() : ACommand()
 
         try
         {
-            foreach (var firstName in Client.FirstNames)
+            foreach (var firstName in Client!.FirstNames)
                 result.Add(firstName.ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray()[0]);
 
-            foreach (var lastName in Client.LastNames)
+            foreach (var lastName in Client!.LastNames)
                 result.Add(lastName.ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray()[0]);
         }
         catch (IndexOutOfRangeException)

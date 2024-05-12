@@ -1,18 +1,18 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Calculators;
 
-namespace NumerologicalLifePath.Tests.Calculators
+namespace NumerologicalLifePath.Sdk.Calculators.Tests
 {
     public sealed class EightLifePathStonesTests
     {
-    
+
         [TestCase("Charles André Joseph Marie", "de Gaulle Maillot", 1890, 11, 22, 24, 31, 15, 14, 2, 16, 15, 16)]
         [TestCase("Emmanuel Jean-Michel Frédéric", "Macron Noguès", 1977, 12, 21, 21, 15, 3, 11, 6, 17, 16, 22)]
         public void Should_Calculate_Resonances_Stones_Values(
-            string firstNames, string lastNames, int year, int month, int day, 
-            int expectedFoundationStone, 
-            int expectedSummitStone, 
-            int expectedLifePathStone, 
+            string firstNames, string lastNames, int year, int month, int day,
+            int expectedFoundationStone,
+            int expectedSummitStone,
+            int expectedLifePathStone,
             int expectedCallingStone,
             int expectedPersonnalityStone,
             int expectedExpressionStone,
@@ -23,25 +23,25 @@ namespace NumerologicalLifePath.Tests.Calculators
             var results = calculator.Calculate(
                 new Client(
                     [.. firstNames.Split(" ")],
-                    [.. lastNames.Split(" ")], 
+                    [.. lastNames.Split(" ")],
                     new DateOnly(year, month, day)
                 ));
 
-            Dictionary<string, Int16> expectedResults = new()
+            Dictionary<string, short> expectedResults = new()
         {
-            {"FoundationStone", (Int16)expectedFoundationStone },
-            {"SummitStone", (Int16)expectedSummitStone },
-            {"LifePathStone", (Int16)expectedLifePathStone },
-            {"CallingStone", (Int16)expectedCallingStone },
-            {"PersonnalityStone", (Int16)expectedPersonnalityStone },
-            {"ExpressionStone", (Int16)expectedExpressionStone },
-            {"TouchStone", (Int16)expectedTouchStone },
-            {"WishStone", (Int16)expectedWishStone },
+            {"FoundationStone", (short)expectedFoundationStone },
+            {"SummitStone", (short)expectedSummitStone },
+            {"LifePathStone", (short)expectedLifePathStone },
+            {"CallingStone", (short)expectedCallingStone },
+            {"PersonnalityStone", (short)expectedPersonnalityStone },
+            {"ExpressionStone", (short)expectedExpressionStone },
+            {"TouchStone", (short)expectedTouchStone },
+            {"WishStone", (short)expectedWishStone },
         };
 
             Check.That(results).Contains(expectedResults);
         }
-        
+
         [TestCase("Charles André Joseph Marie", "de Gaulle Maillot", 1890, 11, 22, "Amazonite", "Moonstone", "Malachite", "Amethyst", "Red Jasper", "Opal", "Malachite", "Opal")]
         [TestCase("Emmanuel Jean-Michel Frédéric", "Macron Noguès", 1977, 12, 21, "Tourmaline", "Malachite", "Chalcedony", "Carnelian", "Garnet", "Turquoise", "Opal", "Rock Crystal")]
         public void Should_Calculate_Resonances_Stones(

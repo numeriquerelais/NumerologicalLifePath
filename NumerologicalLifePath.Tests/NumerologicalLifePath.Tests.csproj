@@ -10,16 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ApprovalTests" Version="6.0.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="NFluent" Version="3.0.4" />
+    <PackageReference Include="NSubstitute" Version="5.1.0" />
     <PackageReference Include="NUnit" Version="3.14.0" />
     <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NumerologicalLifePath\NumerologicalLifePath.csproj" />
+    <ProjectReference Include="..\NumerologicalLifePath.Application\NumerologicalLifePath.Application.csproj" />
+    <ProjectReference Include="..\NumerologicalLifePath\NumerologicalLifePath.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

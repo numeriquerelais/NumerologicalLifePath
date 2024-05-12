@@ -1,9 +1,11 @@
-﻿namespace NumerologicalLifePath.Calculators;
+﻿using NumerologicalLifePath.Calculators;
+
+namespace NumerologicalLifePath.Sdk.Calculators.Tests;
 using NFluent;
 
-public sealed class BithDateResonanceStonesTests
+public sealed class BirthDateResonanceStonesTests
 {
-    
+
     [TestCase(2014, 4, 29, 2, 4, 7, 22)]
     [TestCase(2011, 2, 14, 5, 2, 4, 11)]
     [TestCase(1978, 2, 24, 6, 2, 7, 33)]
@@ -13,15 +15,15 @@ public sealed class BithDateResonanceStonesTests
     [TestCase(1968, 3, 1, 1, 3, 6, 1)]
     public void Should_Calculate_Resonances_Stones_Values(int year, int month, int day, int expectedMoonResult, int expectedSunResult, int expectedEarthResult, int expectedGlobalResult)
     {
-        var calculator = new BithDateResonanceStones();
+        var calculator = new BirthDateResonanceStones();
         var results = calculator.Calculate(new DateOnly(year, month, day));
 
-        Dictionary<string, Int16> expectedResults = new()
+        Dictionary<string, short> expectedResults = new()
         {
-            {"MoonResonanceStone", (Int16)expectedMoonResult },
-            {"SunResonanceStone", (Int16)expectedSunResult },
-            {"EarthResonanceStone", (Int16)expectedEarthResult },
-            {"GlobalResonanceStone", (Int16)expectedGlobalResult },
+            {"MoonResonanceStone", (short)expectedMoonResult },
+            {"SunResonanceStone", (short)expectedSunResult },
+            {"EarthResonanceStone", (short)expectedEarthResult },
+            {"GlobalResonanceStone", (short)expectedGlobalResult },
         };
 
         Check.That(results).Contains(expectedResults);
@@ -36,7 +38,7 @@ public sealed class BithDateResonanceStonesTests
     [TestCase(1968, 3, 1, "Pink Quartz", "Chalcedony", "Garnet", "Pink Quartz")]
     public void Should_Calculate_Resonances_Stones(int year, int month, int day, string expectedMoonResult, string expectedSunResult, string expectedEarthResult, string expectedGlobalResult)
     {
-        var calculator = new BithDateResonanceStones();
+        var calculator = new BirthDateResonanceStones();
         var results = calculator.CalculateStones(new DateOnly(year, month, day));
 
         Dictionary<string, string> expectedResults = new()

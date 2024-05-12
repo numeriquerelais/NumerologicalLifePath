@@ -2,7 +2,7 @@
 using NumerologicalLifePath.Commands;
 using System.Globalization;
 
-namespace NumerologicalLifePath.Tests.Command;
+namespace NumerologicalLifePath.Sdk.Command.Tests;
 
 public sealed class MoonResonanceStoneCommandTests
 {
@@ -22,7 +22,7 @@ public sealed class MoonResonanceStoneCommandTests
     [TestCase("18/05/1990", 9)]
     [TestCase("17/05/1990", 8)]
     [TestCase("16/05/1990", 7)]
-    [TestCase("15/05/1990", 6)] 
+    [TestCase("15/05/1990", 6)]
     [TestCase("14/05/1990", 5)]
     [TestCase("13/05/1990", 4)]
     [TestCase("12/05/1990", 3)]

@@ -4,6 +4,7 @@ public sealed class WishStoneCommand() : ACommand()
 {
     public override void Execute()
     {
+        base.Execute();
         var inputDatas = GetInputDatas();
         _result = Treatments.CharAggregate(inputDatas);
     }

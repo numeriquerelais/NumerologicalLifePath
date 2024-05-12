@@ -3,14 +3,11 @@
 public class Calculator(ICommand[] commands)
 {
     private readonly ICommand[] _commands = commands;
-    private bool run = false;
-    public Client Client
-    {
-        set
-        {
-            foreach (var command in _commands)
-                (command.Client) = value;
-        }
+    private bool run = false;    
+
+    public void SetClient(Client client) {
+        foreach (var command in _commands)
+            command.SetClient(client);
     }
 
     public Dictionary<string, Int16> Results

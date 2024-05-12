@@ -6,6 +6,7 @@ public sealed class PersonnalityStoneCommand(bool reduceAggrgate = true) : AComm
 
     public override void Execute()
     {
+        base.Execute();
         var inputDatas = GetInputDatas();
 
         if (inputDatas.Length == 0)

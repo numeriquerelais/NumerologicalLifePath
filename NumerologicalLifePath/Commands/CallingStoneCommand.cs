@@ -5,6 +5,7 @@ public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand(
     private readonly bool _reduceAggregate = reduceAggregate;
     public override void Execute()
     {
+        base.Execute();
         var inputDatas = GetInputDatas();
 
         if (inputDatas.Length == 0)

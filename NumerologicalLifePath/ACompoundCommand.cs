@@ -8,13 +8,6 @@ public abstract class ACompoundCommand(List<ICommand> commands, bool reduceAggre
 
     public Int16 Result { get => _result; }
 
-    public Client Client { 
-        set { 
-            foreach (var command in _commands) 
-                (command.Client) = value;
-        } 
-    }
-
     public void Execute() {
         Int16 results = 0;
   
@@ -25,5 +18,11 @@ public abstract class ACompoundCommand(List<ICommand> commands, bool reduceAggre
         }
 
         _result = _reduceAggregate ? Treatments.DigitAggregate(results.ToString()) : results;
+    }
+
+    public void SetClient(Client client)
+    {
+        foreach (var command in _commands)
+            command.SetClient(client);
     }
 }

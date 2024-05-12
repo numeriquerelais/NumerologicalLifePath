@@ -30,7 +30,7 @@ public sealed class LifePathStoneCommandTests
         var command = new LifePathStoneCommand();
 
         Check.ThatCode(() => command.Execute())
-               .Throws<NullReferenceException>()
-               .WithMessage("Object reference not set to an instance of an object.");
+               .Throws<InvalidOperationException>()
+               .WithMessage("Client is null.");
     }
 }

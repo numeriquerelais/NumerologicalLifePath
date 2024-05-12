@@ -38,7 +38,7 @@ public sealed class FoundationStoneCommandTests
         var command = new FoundationStoneCommand();
 
         Check.ThatCode(() => command.Execute())
-               .Throws<NullReferenceException>()
-               .WithMessage("Object reference not set to an instance of an object.");
+               .Throws<InvalidOperationException>()
+               .WithMessage("Client is null.");
     }
 }

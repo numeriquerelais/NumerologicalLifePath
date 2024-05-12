@@ -2,6 +2,8 @@
 public interface ICommand {
     
     public Int16 Result { get; }
-    public Client Client { set; }
+
+    public void SetClient(Client client);
+
     void Execute();
 }

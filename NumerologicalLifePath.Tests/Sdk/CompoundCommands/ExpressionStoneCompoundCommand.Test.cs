@@ -10,7 +10,8 @@ public sealed class ExpressionStoneCompoundCommandTests
     public void Should_Execute_Commands(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new ExpressionStoneCompoundCommand() { Client = clt };
+        var command = new ExpressionStoneCompoundCommand();
+        command.SetClient(clt);
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -21,7 +22,8 @@ public sealed class ExpressionStoneCompoundCommandTests
     public void Should_Execute_Commands_Not_Reduced(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new ExpressionStoneCompoundCommand(false) { Client = clt };
+        var command = new ExpressionStoneCompoundCommand(false);
+        command.SetClient(clt);
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -31,7 +33,8 @@ public sealed class ExpressionStoneCompoundCommandTests
     {
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly());
 
-        var command = new ExpressionStoneCompoundCommand() { Client = clt };
+        var command = new ExpressionStoneCompoundCommand();
+        command.SetClient(clt);
 
         Check.ThatCode(() => command.Execute())
                .Throws<Exception>();
@@ -43,7 +46,7 @@ public sealed class ExpressionStoneCompoundCommandTests
         var command = new ExpressionStoneCompoundCommand();
 
         Check.ThatCode(() => command.Execute())
-               .Throws<NullReferenceException>()
-               .WithMessage("Object reference not set to an instance of an object.");
+               .Throws<InvalidOperationException>()
+               .WithMessage("Client is null.");
     }
 }

@@ -1,7 +1,4 @@
-﻿using NumerologicalLifePath.Commands;
-using NumerologicalLifePath.CompoundCommands;
-
-namespace NumerologicalLifePath;
+﻿namespace NumerologicalLifePath;
 
 public abstract class ACalculator
 {
@@ -13,7 +10,7 @@ public abstract class ACalculator
 
     public Dictionary<string, Int16> Calculate(Client clt)
     {
-        _calculator.Client = clt;
+        _calculator.SetClient(clt);
         return _calculator.Results;
     }
 

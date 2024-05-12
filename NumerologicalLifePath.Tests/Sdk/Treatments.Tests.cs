@@ -1,7 +1,7 @@
 using NFluent;
 using System.Text;
 
-namespace NumerologicalLifePath.Tests
+namespace NumerologicalLifePath.Tests.Sdk
 {
     public sealed class TreatmentsTests
     {
@@ -25,7 +25,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(238, 9)]//'î'
         [TestCase(236, 9)]//'ì'
         [TestCase(231, 3)]//'ç' 
-        public void Should_Convert_Letter_To_Figure(Int16 decimalValue, Int16 expectedFigure)
+        public void Should_Convert_Letter_To_Figure(short decimalValue, short expectedFigure)
         {
             char letter = Convert.ToChar(decimalValue);
             Check.That(letter.ConvertToDigit()).Equals(expectedFigure);
@@ -37,13 +37,13 @@ namespace NumerologicalLifePath.Tests
         [TestCase(36)]//'$'
         [TestCase(64)]//'@'
         [TestCase(156)]//'œ'        
-        public void Should_Not_Convert_Letter_To_Figure(Int16 decimalValue)
+        public void Should_Not_Convert_Letter_To_Figure(short decimalValue)
         {
             char letter = Convert.ToChar(decimalValue);
             Check.ThatCode(() => letter.ConvertToDigit())
                 .Throws<ArgumentOutOfRangeException>()
                 .WithMessage($"Specified argument was out of the range of valid values. (Parameter '{letter} is not a letter')");
-;
+            ;
         }
 
         [TestCase("Marie", "41995")]
@@ -52,7 +52,8 @@ namespace NumerologicalLifePath.Tests
         public void Should_Convert_FirstName_To_Numerics(string firstName, string expectedResult)
         {
             StringBuilder buffer = new();
-            foreach (char letter in firstName) { 
+            foreach (char letter in firstName)
+            {
                 buffer.Append(letter.ConvertToDigit());
             }
 
@@ -62,15 +63,16 @@ namespace NumerologicalLifePath.Tests
         [TestCase("NELO", 19)]
         [TestCase("MSAQM", 18)]
         [TestCase("RPMT", 22)]
-        [TestCase("OAIIEEIEIAO",11)]
+        [TestCase("OAIIEEIEIAO", 11)]
         [TestCase("RMNPRRMCHLTG", 7)]
         [TestCase("ieoaaoaaoaao", 8)]
         [TestCase("DgrmndMrdnFrnc", 15)]
         [TestCase("iaaa", 12)]
         [TestCase("yeoa", 19)]
         [TestCase("yieueeoioauoi", 11)]
-        [TestCase("aieioeaoieeuaaooeau", 15)]        
-        public void Should_Agregate_Letters_To_Numerics(string letters, int expectedResult) {
+        [TestCase("aieioeaoieeuaaooeau", 15)]
+        public void Should_Agregate_Letters_To_Numerics(string letters, int expectedResult)
+        {
             Check.That(Treatments.CharAggregate(letters.ToCharArray())).Equals(expectedResult);
         }
 
@@ -103,7 +105,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(239)]//'ï'
         [TestCase(238)]//'î'
         [TestCase(236)]//'ì'
-        public void Should_Find_Letter_Is_Vowel(Int16 decimalValue)
+        public void Should_Find_Letter_Is_Vowel(short decimalValue)
         {
             char letter = Convert.ToChar(decimalValue);
             Check.That(Treatments.IsVowel(letter)).IsTrue();
@@ -132,7 +134,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(87)]//'W'
         [TestCase(120)]//'x'
         [TestCase(90)]//'Z'
-        public void Should_Find_Letter_Is_Not_A_Vowel(Int16 decimalValue)
+        public void Should_Find_Letter_Is_Not_A_Vowel(short decimalValue)
         {
             char letter = Convert.ToChar(decimalValue);
             Check.That(Treatments.IsVowel(letter)).IsFalse();
@@ -161,7 +163,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(87)]//'W'
         [TestCase(120)]//'x'
         [TestCase(90)]//'Z'
-        public void Should_Find_Letter_Is_A_Consonant(Int16 decimalValue)
+        public void Should_Find_Letter_Is_A_Consonant(short decimalValue)
         {
             char letter = Convert.ToChar(decimalValue);
             Check.That(Treatments.IsConsonant(letter)).IsTrue();
@@ -183,7 +185,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(239)]//'ï'
         [TestCase(238)]//'î'
         [TestCase(236)]//'ì'
-        public void Should_Find_Letter_Is_Not_A_Consonant(Int16 decimalValue)
+        public void Should_Find_Letter_Is_Not_A_Consonant(short decimalValue)
         {
             char letter = Convert.ToChar(decimalValue);
             Check.That(Treatments.IsConsonant(letter)).IsFalse();
@@ -208,7 +210,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(53, 8)]
         [TestCase(72, 9)]
         [TestCase(256, 4)]
-        public void Should_Get_Numerological_Resonance_Of_Digit(Int16 value, Int16 expectedResult)
+        public void Should_Get_Numerological_Resonance_Of_Digit(short value, short expectedResult)
         {
             Check.That(value.NumerologicalResonance()).Equals(expectedResult);
         }
@@ -220,7 +222,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(10, 9, 1990, 11)]
         [TestCase(24, 2, 1978, 33)]
         [TestCase(29, 4, 2014, 22)]
-        public void Should_Get_Numerological_Resonance_Of_Date(Int16 day, Int16 month, Int16 year, Int16 expectedResult)
+        public void Should_Get_Numerological_Resonance_Of_Date(short day, short month, short year, short expectedResult)
         {
             var date = new DateOnly(year, month, day);
             Check.That(date.NumerologicalResonance()).Equals(expectedResult);
@@ -230,7 +232,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(29, "Sodalite")]
         [TestCase(20, "Lapis Lazuli")]
         [TestCase(33, "Tourmalinated Quartz")]
-        public void Should_Convert_Number_To_Stone(Int16 number, string expectedStoneName)
+        public void Should_Convert_Number_To_Stone(short number, string expectedStoneName)
         {
             Check.That(number.ConvertToStone()).Equals(expectedStoneName);
         }
@@ -238,7 +240,7 @@ namespace NumerologicalLifePath.Tests
         [TestCase(0)]
         [TestCase(-1)]
         [TestCase(34)]
-        public void Should_Not_Convert_Number_To_Stone(Int16 number)
+        public void Should_Not_Convert_Number_To_Stone(short number)
         {
             Check.ThatCode(() => number.ConvertToStone())
                 .Throws<IndexOutOfRangeException>()

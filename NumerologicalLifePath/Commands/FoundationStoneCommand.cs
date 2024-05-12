@@ -13,10 +13,10 @@ public sealed class FoundationStoneCommand() : ACommand()
         var result = new List<char>();
             
         try { 
-            foreach (var firstName in Client.FirstNames)
+            foreach (var firstName in Client!.FirstNames)
                 result.Add(firstName[0]);
 
-            foreach (var lastName in Client.LastNames)
+            foreach (var lastName in Client!.LastNames)
                 result.Add(lastName[0]);
         }
         catch(IndexOutOfRangeException) {

@@ -16,7 +16,7 @@ public sealed class PersonnalityStoneCommand(bool reduceAggrgate = true) : AComm
 
     protected override char[] GetInputDatas()
     {
-        var letters = (string.Join("", Client.FirstNames) + string.Join("", Client.LastNames)).ToCharArray().Where(letter => Treatments.IsConsonant(letter)).ToArray();
+        var letters = (string.Join("", Client!.FirstNames) + string.Join("", Client!.LastNames)).ToCharArray().Where(letter => Treatments.IsConsonant(letter)).ToArray();
         return [.. letters];
     }
 }

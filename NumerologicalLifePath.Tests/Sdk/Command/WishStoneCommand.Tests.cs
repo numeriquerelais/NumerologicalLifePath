@@ -1,21 +1,17 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
 
-namespace NumerologicalLifePath.Tests.Command;
+namespace NumerologicalLifePath.Sdk.Command.Tests;
 
-public sealed class SummitStoneCommandTests
+public sealed class WishStoneCommandTests
 {
-    [TestCase("Romain Pierre", "Michel Tiago", 19)]
-    [TestCase("Diego Armando", "Maradona Franco", 19)]
-    [TestCase("Edson", "Arantes do Nascimento", 18)]
-    [TestCase("Neymar Júnior", "da Silva Santos", 21)]
-    [TestCase("Cristiano Ronaldo", "dos Santos Aveiro", 20)]
-    [TestCase("Ryar Ronaldor", "Roanitor Riberryr", 9)]
-    [TestCase("John", "Doe", 10)]
+    [TestCase("Romain Pierre", "Michel Tiago", 33)]
+    [TestCase("Diego Armando", "Maradona Franco", 12)]
+    [TestCase("Diego Irmando", "Miradona Frinco", 9)]
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
         Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
-        var command = new SummitStoneCommand() { Client = clt };
+        var command = new WishStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -25,17 +21,17 @@ public sealed class SummitStoneCommandTests
     {
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly());
 
-        var command = new SummitStoneCommand() { Client = clt };
+        var command = new WishStoneCommand() { Client = clt };
 
         Check.ThatCode(() => command.Execute())
                .Throws<ArgumentException>()
-               .WithMessage("Client first names and/or last names lists are empties.");
+               .WithMessage("No Vowel found.");
     }
 
     [Test]
     public void Should_Not_Execute_Command_Without_Client()
     {
-        var command = new SummitStoneCommand();
+        var command = new WishStoneCommand();
 
         Check.ThatCode(() => command.Execute())
                .Throws<NullReferenceException>()

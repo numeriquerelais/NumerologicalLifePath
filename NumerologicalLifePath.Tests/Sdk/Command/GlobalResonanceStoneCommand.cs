@@ -2,16 +2,16 @@
 using NumerologicalLifePath.Commands;
 using System.Globalization;
 
-namespace NumerologicalLifePath.Tests.Command;
+namespace NumerologicalLifePath.Sdk.Command.Tests;
 
-public sealed class LifePathStoneCommandTests
+public sealed class GlobalResonanceStoneCommandTests
 {
-    [TestCase("31/05/1990", 10)]
-    [TestCase("30/10/1960", 2)]
-    [TestCase("05/02/1985", 21)]
-    [TestCase("01/01/0032", 7)]
-    [TestCase("29/12/9937", 33)]
-    [TestCase("29/12/9938", 7)]
+    [TestCase("08/02/1968", 7)]
+    [TestCase("20/04/1985", 11)]
+    [TestCase("09/06/1996", 4)]
+    [TestCase("10/09/1990", 11)]
+    [TestCase("24/02/1978", 33)]
+    [TestCase("29/04/2014", 22)]
     public void Should_Execute_Command(string strBirthDate, int expectedResult)
     {
         DateTime.TryParseExact(strBirthDate, "dd/MM/yyyy",
@@ -19,7 +19,7 @@ public sealed class LifePathStoneCommandTests
                            DateTimeStyles.None,
                            out var birthDate);
         Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
-        var command = new LifePathStoneCommand() { Client = clt};
+        var command = new GlobalResonanceStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -27,7 +27,7 @@ public sealed class LifePathStoneCommandTests
     [Test]
     public void Should_Not_Execute_Command_Without_Client()
     {
-        var command = new LifePathStoneCommand();
+        var command = new GlobalResonanceStoneCommand();
 
         Check.ThatCode(() => command.Execute())
                .Throws<NullReferenceException>()

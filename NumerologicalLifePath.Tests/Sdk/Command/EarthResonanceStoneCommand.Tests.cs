@@ -2,7 +2,7 @@
 using NumerologicalLifePath.Commands;
 using System.Globalization;
 
-namespace NumerologicalLifePath.Tests.Command;
+namespace NumerologicalLifePath.Sdk.Command.Tests;
 
 public sealed class EarthResonanceStoneCommandTests
 {

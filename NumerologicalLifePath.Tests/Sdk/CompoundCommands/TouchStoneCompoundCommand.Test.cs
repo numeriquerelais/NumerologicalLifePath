@@ -1,8 +1,7 @@
 ﻿using NFluent;
-using NumerologicalLifePath.Commands;
 using NumerologicalLifePath.CompoundCommands;
 
-namespace NumerologicalLifePath.Tests.CompoundCommands;
+namespace NumerologicalLifePath.Sdk.CompoundCommands.Tests;
 
 public sealed class TouchStoneCompoundCommandTests
 {

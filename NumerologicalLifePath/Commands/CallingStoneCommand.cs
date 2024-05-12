@@ -15,7 +15,7 @@ public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand(
 
     protected override char[] GetInputDatas()
     {
-        var letters = (string.Join("", Client.FirstNames) + string.Join("", Client.LastNames)).ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray();
+        var letters = (string.Join("", Client!.FirstNames) + string.Join("", Client!.LastNames)).ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray();
         return [.. letters];
     }
 }

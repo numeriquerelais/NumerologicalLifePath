@@ -1,0 +1,5 @@
+﻿The BirthDate Resonance Stones are : 
+ - GlobalResonanceStone : 1 - Pink Quartz
+ - MoonResonanceStone : 6 - Garnet
+ - SunResonanceStone : 2 - Red Jasper
+ - EarthResonanceStone : 2 - Red Jasper

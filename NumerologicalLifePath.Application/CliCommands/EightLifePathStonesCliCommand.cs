@@ -21,7 +21,11 @@ public sealed class EightLifePathStonesCliCommand : ThreeOptionsCliCommandWrappe
                 { IsRequired = true },
                 new Option<DateOnly>(
                     name: "--birthDate",
-                    description: "The birthday date DD/MM/YYYY."
+                    description: "The birthday date dd/MM/yyyy.",
+                    parseArgument: result =>
+                    {
+                        return result.ConvertArgToDateOnly();
+                    }
                 )
                 { IsRequired = true },
                 delegate (string firstNames, string lastNames, DateOnly birthdate)
@@ -36,4 +40,6 @@ public sealed class EightLifePathStonesCliCommand : ThreeOptionsCliCommandWrappe
                 ["-f","-l", "-d"]
         ))
     { }
+
+    
 }

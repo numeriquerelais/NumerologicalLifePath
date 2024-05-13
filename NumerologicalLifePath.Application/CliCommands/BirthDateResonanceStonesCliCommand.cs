@@ -12,7 +12,11 @@ public class BirthDateResonanceStonesCliCommand : SingleCliCommandWrapper<DateOn
                 "Command to get birth date resonance stones.",
                 new Option<DateOnly>(
                     name: "--birthDate",
-                    description: "The birthday date DD/MM/YYYY."
+                    description: "The birthday date dd/MM/yyyy.",
+                    parseArgument: result =>
+                    {
+                        return result.ConvertArgToDateOnly();
+                    }
                 )
                 {
                     IsRequired = true

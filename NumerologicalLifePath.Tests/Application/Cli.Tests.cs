@@ -73,7 +73,7 @@ public sealed class CliTests
 
         Check
             .ThatCode(async() => await cli.StartAsync(args))
-        .Throws<CannotParseException>()
+        .Throws<CannotParseArugmentException>()
             .WithMessage("Cannot parse argument '15,02,1955' as expected type 'System.DateOnly'.");
     }
 
@@ -129,7 +129,7 @@ public sealed class CliTests
 
         Check
             .ThatCode(async () => await cli.StartAsync(args))
-        .Throws<CannotParseException>()
+        .Throws<CannotParseArugmentException>()
             .WithMessage("Cannot parse argument '1955,02,15' as expected type 'System.DateOnly'.");
     }
 

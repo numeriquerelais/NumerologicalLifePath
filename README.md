@@ -14,6 +14,22 @@ Le but de ce projet est de prendre du plaisir et de faire un travail de qualité 
   - ApprovalTests
 
 
+
+## Utilisation
+### Calcul des pierres du chemin de vie
+```cmd
+NumerologicalLifePath.Application lifePath -f "Simon Roger" -l "Federer Connors" -d "15/02/1955"
+```
+- -f : la liste des prénoms séparés par un espace
+- -l : la liste de noms de famille (nom du père, nom de la mère) séparés par un espace
+- -d : la date de naissance au format jj/MM/AAAA
+
+### Calcul des chiffres en résonance vibratoire avec sa date de naissance
+```cmd
+NumerologicalLifePath.Application birthStones -d "15/02/1955"
+```
+- -d : la date de naissance au format jj/MM/AAAA
+
 ## Règles
 ### Table de correspondance lettre - chiffre
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |

@@ -1,0 +1,11 @@
+﻿Description:
+  Command to get birth date resonance stones.
+
+Usage:
+  testhost birthStones [options]
+
+Options:
+  -d, --birthDate <birthDate> (REQUIRED)  The birthday date dd/MM/yyyy.
+  -?, -h, --help                          Show help and usage information
+
+

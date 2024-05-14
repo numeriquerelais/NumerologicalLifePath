@@ -63,6 +63,20 @@ public sealed class CliTests
     }
 
     [Test]
+    public async Task Should_Display_Help_Of_LifePath_Command_Approval_Test()
+    {
+        var cli = new Cli([
+            new EightLifePathStonesCliCommand()
+        ]);
+
+        var args = ConverToArgsArray("lifePath -h");
+
+        await cli.StartAsync(args);
+
+        Approvals.Verify(_writer.ToString());
+    }
+
+    [Test]
     public void Should_Not_Execute_LifePath_Command_With_Not_Parsable_DateOnly()
     {
         var cli = new Cli([
@@ -99,6 +113,20 @@ public sealed class CliTests
         ]);
 
         var args = ConverToArgsArray("birthStones -d 02.15.1955");
+
+        await cli.StartAsync(args);
+
+        Approvals.Verify(_writer.ToString());
+    }
+
+    [Test]
+    public async Task Should_Display_Help_Of_BirthDateResonance_Command_Approval_Test()
+    {
+        var cli = new Cli([
+            new BirthDateResonanceStonesCliCommand()
+        ]);
+
+        var args = ConverToArgsArray("birthStones -h");
 
         await cli.StartAsync(args);
 

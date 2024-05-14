@@ -59,7 +59,7 @@ public class Cli
 
     private void AddCommand<T1, T2, T3>(ThreeOptionsCliCommandWrapper<T1, T2, T3> wrapper)
     {
-        var cmd = new Command(wrapper.CommandName, wrapper.CommandName);
+        var cmd = new Command(wrapper.CommandName, wrapper.Description);
         cmd.AddOption(wrapper.Option1);
         cmd.AddOption(wrapper.Option2);
         cmd.AddOption(wrapper.Option3);

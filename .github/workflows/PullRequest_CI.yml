@@ -1,8 +1,8 @@
 name: build, test and analyze
 
 on:
-  workflow_dispatch:
   pull_request:
+  workflow_dispatch:
     branches: [ main ]
     paths:
     - '**.cs'
@@ -66,10 +66,11 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
-      - name: Build and analyze
+      - name: Build, test and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
+          STRYKER_TOKEN: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"numeriquerelais_NumerologicalLifePath" /o:"numeriquerelais" /d:sonar.token="${{ env.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.verbose=true" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.coverage.exclusions=**/*Program.cs
@@ -80,5 +81,8 @@ jobs:
       - name: Stryker mutator analiyze
         env:
          STRYKER_TOKEN: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
-        run: dotnet stryker --break-at 80 --with-baseline:${{ github.ref  }} --dashboard-api-key ${{ env.STRYKER_TOKEN }} --version ${{ github.head_ref  }}
-          
+        shell: powershell
+        working-directory: ${{ github.workspace }}
+        run: |
+          dotnet tool restore 
+          dotnet stryker --reporter dashboard --dashboard-api-key ${{ env.STRYKER_TOKEN }}

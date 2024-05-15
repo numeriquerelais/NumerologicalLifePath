@@ -41,4 +41,14 @@ public sealed class FoundationStoneCommandTests
                .Throws<InvalidOperationException>()
                .WithMessage("Client is null.");
     }
+
+    [Test]
+    public void Should_Not_Execute_Command_WithoutClient()
+    {
+        var command = new FoundationStoneCommand();
+
+        Check.ThatCode(() => { command.Execute(); })
+            .Throws<InvalidOperationException>()
+            .WithMessage("Client is null.");
+    }
 }

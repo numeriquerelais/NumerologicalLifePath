@@ -27,4 +27,14 @@ public sealed class EarthResonanceStoneCommandTests
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
+
+    [Test]
+    public void Should_Not_Execute_Command_WithoutClient()
+    {
+        var command = new EarthResonanceStoneCommand();
+
+        Check.ThatCode(() => { command.Execute(); })
+            .Throws< InvalidOperationException>()
+            .WithMessage("Client is null.");
+    }
 }

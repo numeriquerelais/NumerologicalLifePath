@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Commands;
+using System.Globalization;
 
 namespace NumerologicalLifePath.Sdk.Command.Tests;
 
@@ -38,5 +39,15 @@ public sealed class CallingStoneCommandTests
         Check.ThatCode(() => command.Execute())
                .Throws<ArgumentException>()
                .WithMessage("No Vowel found.");
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_WithoutClient()
+    {
+        var command = new CallingStoneCommand();
+
+        Check.ThatCode(() => { command.Execute(); })
+            .Throws<InvalidOperationException>()
+            .WithMessage("Client is null.");
     }
 }

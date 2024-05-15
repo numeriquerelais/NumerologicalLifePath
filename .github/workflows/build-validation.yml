@@ -12,9 +12,9 @@ env:
   DOTNET_VERSION: '8.0.204' # The .NET SDK version to use
 
 jobs:
-  build-and-test:
+  quick-linux-build-and-test:
 
-    name: build-and-test
+    name: quick-linux-build-and-test
     runs-on: ubuntu-latest
 
     steps:
@@ -71,6 +71,9 @@ jobs:
       - name: Install Dotnet Coverage
         run : dotnet tool install --global dotnet-coverage
 
+      - name: Install Dotnet Stryker Mutator
+        run : dotnet tool install --global dotnet-stryker
+
       - name: Install dependencies
         run: dotnet restore
 
@@ -83,4 +86,5 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"numeriquerelais_NumerologicalLifePath" /o:"numeriquerelais" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.verbose=true" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.coverage.exclusions=**/*Program.cs
           dotnet build --configuration Release --no-restore --no-incremental
           dotnet-coverage collect 'dotnet test --no-restore --verbosity normal' -f xml -o 'coverage.xml'
+          dotnet stryker --break-at 80 --with-baseline:${{ github.event.pull_request.base.ref  }} --dashboard-api-key ${{secrets.STRYKER_DASHBOARD_API_KEY}} --version ${{ github.event.pull_request.head.ref  }}
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

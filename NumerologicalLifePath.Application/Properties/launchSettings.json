@@ -2,7 +2,7 @@
   "profiles": {
     "NumerologicalLifePath.Application": {
         "commandName": "Project",
-        "commandLineArgs": "lifePath -h "
+        "commandLineArgs": "lifePath -f \"Simon Roger\" -l \"Federer Connors\" -d \"15/02/1955\" "
     }
   }
 }

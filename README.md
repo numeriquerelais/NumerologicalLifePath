@@ -3,6 +3,8 @@
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=numeriquerelais_NumerologicalLifePath)](https://sonarcloud.io/summary/new_code?id=numeriquerelais_NumerologicalLifePath)
 
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fnumeriquerelais%2FNumerologicalLifePath%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/numeriquerelais/NumerologicalLifePath/main)
+
 Le but de ce projet est de prendre du plaisir et de faire un travail de qualité en mettant en place :
 - Les règles de calcul numérologique à partir de la date de naissance et des noms et prénoms d'une personne pour déterminer :
   - les pierres de son chemin de vie 
@@ -57,6 +59,7 @@ NumerologicalLifePath.Application birthStones -d "15/02/1955"
 [SonarCloud YML sample](https://github.com/brenordv/validator-dot-net/blob/master/.github/workflows/build.yml)
 [Clean CLI](https://github.com/NikiforovAll/clean-cli-todo-example/tree/main/src/CleanCli.Todo.Console)
 [ApprovalTests tutoial](https://lassiautio.com/2018/03/18/approvaltests-one-of-my-favorite-nuget/)
+[Stryker Mutator - my repo](https://dashboard.stryker-mutator.io/repos/numeriquerelais)
 
 ### Forum
 https://community.sonarsource.com/t/net-github-actions-0-coverage/114718

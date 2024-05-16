@@ -1,38 +1,27 @@
-name: build and test
+name: build, test and analyze
 
 on:
-  push:
+  workflow_dispatch:
   pull_request:
     branches: [ main ]
     paths:
     - '**.cs'
     - '**.csproj'
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   DOTNET_VERSION: '8.0.204' # The .NET SDK version to use
 
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+  pages: write
+
 jobs:
-  quick-linux-build-and-test:
-
-    name: quick-linux-build-and-test
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: Install dependencies
-      run: dotnet restore
-      
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
-
   build-and-analyze:
     name: Build and analyze
     runs-on: windows-latest
@@ -80,11 +69,16 @@ jobs:
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"numeriquerelais_NumerologicalLifePath" /o:"numeriquerelais" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.verbose=true" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.coverage.exclusions=**/*Program.cs
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"numeriquerelais_NumerologicalLifePath" /o:"numeriquerelais" /d:sonar.token="${{ env.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.verbose=true" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.coverage.exclusions=**/*Program.cs
           dotnet build --configuration Release --no-restore --no-incremental
           dotnet-coverage collect 'dotnet test --no-restore --verbosity normal' -f xml -o 'coverage.xml'
-          dotnet stryker --break-at 80 --with-baseline:${{ github.event.pull_request.base.ref  }} --dashboard-api-key ${{secrets.STRYKER_DASHBOARD_API_KEY}} --version ${{ github.event.pull_request.head.ref  }}
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ env.SONAR_TOKEN }}"
+
+      - name: Stryker mutator analiyze
+        env:
+         STRYKER_TOKEN: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+        run: dotnet stryker --break-at 80 --with-baseline:${{ github.ref  }} --dashboard-api-key ${{ env.STRYKER_TOKEN }} --version ${{ github.head_ref  }}
+          

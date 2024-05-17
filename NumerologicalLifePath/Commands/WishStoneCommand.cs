@@ -9,22 +9,27 @@ public sealed class WishStoneCommand() : ACommand()
         _result = Treatments.CharAggregate(inputDatas);
     }
 
-    protected override char[] GetInputDatas()
+    private char[] GetInputDatas()
     {
         var result = new List<char>();
 
-        try
+        if (Client?.FirstNames != null)
         {
-            foreach (var firstName in Client!.FirstNames)
+            var firstNames = Client.FirstNames.Where(f => !String.IsNullOrWhiteSpace(f.Trim())).ToList();
+            foreach (var firstName in firstNames)
                 result.Add(firstName.ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray()[0]);
+        }
 
-            foreach (var lastName in Client!.LastNames)
+        if (Client?.LastNames != null)
+        {
+            var lastNames = Client.LastNames.Where(l => !String.IsNullOrWhiteSpace(l.Trim())).ToList();
+            foreach (var lastName in lastNames)
                 result.Add(lastName.ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray()[0]);
         }
-        catch (IndexOutOfRangeException)
-        {
-            throw new ArgumentException("No Vowel found.");
-        }
+            
+
+        if (result.Count == 0)
+            throw new ArgumentException("No vowel found.");
 
         return [.. result];
     }

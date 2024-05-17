@@ -1,6 +1,8 @@
-﻿namespace NumerologicalLifePath.Commands;
+﻿using NumerologicalLifePath.Sdk;
 
-public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand()
+namespace NumerologicalLifePath.Commands;
+
+public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand(), ICommandInputData
 {
     private readonly bool _reduceAggregate = reduceAggregate;
     public override void Execute()
@@ -9,14 +11,16 @@ public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand(
         var inputDatas = GetInputDatas();
 
         if (inputDatas.Length == 0)
-            throw new ArgumentException("No Vowel found.");
+            throw new ArgumentException("No vowel found.");
 
         _result = Treatments.CharAggregate(inputDatas, _reduceAggregate);
     }
 
-    protected override char[] GetInputDatas()
+    private char[] GetInputDatas()
     {
-        var letters = (string.Join("", Client!.FirstNames) + string.Join("", Client!.LastNames)).ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray();
-        return [.. letters];
+        string letters = string.Concat(string.Join("", Client?.FirstNames ?? []), string.Join("", Client?.LastNames ?? []));
+
+        var results = letters.ToCharArray().Where(letter => Treatments.IsVowel(letter)).ToArray();
+        return [.. results];
     }
 }

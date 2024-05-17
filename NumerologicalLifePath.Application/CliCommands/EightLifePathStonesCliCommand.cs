@@ -30,7 +30,7 @@ public sealed class EightLifePathStonesCliCommand : ThreeOptionsCliCommandWrappe
                 { IsRequired = true },
                 delegate (string firstNames, string lastNames, DateOnly birthdate)
                 {
-                    var clt = new Client([.. firstNames.Split(",")], [.. lastNames.Split(",")], birthdate);
+                    var clt = new Client(birthdate, [.. firstNames.Split(",")], [.. lastNames.Split(",")]);
                     var calculator = new EightLifePathStones();
                     var digits = calculator.Calculate(clt);
                     var infos = string.Join("\r\n",

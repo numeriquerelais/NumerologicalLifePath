@@ -1,7 +1,6 @@
 {
     "stryker-config": {
         "solution": "NumerologicalLifePath.sln",
-        "project": "NumerologicalLifePath.Application.csproj",
         "thresholds": {
             "high": 90,
             "low": 80,

@@ -25,12 +25,14 @@ namespace NumerologicalLifePath.Tests.Sdk
         [TestCase(238, 9)]//'î'
         [TestCase(236, 9)]//'ì'
         [TestCase(231, 3)]//'ç' 
+        [TestCase(90, 8)] //'Z'
         public void Should_Convert_Letter_To_Figure(short decimalValue, short expectedFigure)
         {
             char letter = Convert.ToChar(decimalValue);
             Check.That(letter.ConvertToDigit()).Equals(expectedFigure);
         }
 
+        [TestCase(91)]//'['
         [TestCase(137)]//'_'
         [TestCase(55)]//'7'
         [TestCase(42)]//'*'
@@ -219,9 +221,11 @@ namespace NumerologicalLifePath.Tests.Sdk
         [TestCase(8, 2, 1968, 7)]
         [TestCase(20, 4, 1985, 11)]
         [TestCase(9, 6, 1996, 4)]
+        [TestCase(23, 2, 1978, 5)]
         [TestCase(10, 9, 1990, 11)]
         [TestCase(24, 2, 1978, 33)]
         [TestCase(29, 4, 2014, 22)]
+        [TestCase(1, 1, 0001, 3)]
         public void Should_Get_Numerological_Resonance_Of_Date(short day, short month, short year, short expectedResult)
         {
             var date = new DateOnly(year, month, day);
@@ -229,8 +233,37 @@ namespace NumerologicalLifePath.Tests.Sdk
         }
 
         [TestCase(1, "Pink Quartz")]
-        [TestCase(29, "Sodalite")]
+        [TestCase(2, "Red Jasper")]
+        [TestCase(3, "Chalcedony")]
+        [TestCase(4, "Jade")]
+        [TestCase(5, "Emerald")]
+        [TestCase(6, "Garnet")]
+        [TestCase(7, "Citrine")]
+        [TestCase(8, "Obsidian")]
+        [TestCase(9, "Aquamarine")]
+        [TestCase(10, "Rhodochrosite")]
+        [TestCase(11, "Carnelian")]
+        [TestCase(12, "Amber")]
+        [TestCase(13, "Hematite")]
+        [TestCase(14, "Amethyst")]
+        [TestCase(15, "Malachite")]
+        [TestCase(16, "Opal")]
+        [TestCase(17, "Turquoise")]
+        [TestCase(18, "Moonstone")]
+        [TestCase(19, "Topaz")]
         [TestCase(20, "Lapis Lazuli")]
+        [TestCase(21, "Tourmaline")]
+        [TestCase(22, "Rock Crystal")]
+        [TestCase(23, "Azurite")]
+        [TestCase(24, "Amazonite")]
+        [TestCase(25, "Tiger's Eye")]
+        [TestCase(26, "Pyrite")]
+        [TestCase(27, "Fluorite")]
+        [TestCase(28, "Pearl")]
+        [TestCase(29, "Sodalite")]
+        [TestCase(30, "Smoky Quartz")]
+        [TestCase(31, "Moonstone")]
+        [TestCase(32, "Mokaïte")]
         [TestCase(33, "Tourmalinated Quartz")]
         public void Should_Convert_Number_To_Stone(short number, string expectedStoneName)
         {

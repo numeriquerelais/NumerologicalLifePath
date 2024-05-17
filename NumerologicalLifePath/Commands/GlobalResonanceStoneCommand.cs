@@ -7,6 +7,4 @@ public sealed class GlobalResonanceStoneCommand() : ACommand()
         base.Execute();
         _result = Client!.BirthDate.NumerologicalResonance();
     }
-
-    protected override char[] GetInputDatas() => throw new NotImplementedException();
 }

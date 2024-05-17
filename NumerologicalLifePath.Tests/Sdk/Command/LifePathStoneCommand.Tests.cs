@@ -18,7 +18,7 @@ public sealed class LifePathStoneCommandTests
                            CultureInfo.InvariantCulture,
                            DateTimeStyles.None,
                            out var birthDate);
-        Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
+        Client clt = new(new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
         var command = new LifePathStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);

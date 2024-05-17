@@ -22,7 +22,7 @@ public sealed class EarthResonanceStoneCommandTests
                            CultureInfo.InvariantCulture,
                            DateTimeStyles.None,
                            out var birthDate);
-        Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
+        Client clt = new(new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
         var command = new EarthResonanceStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);

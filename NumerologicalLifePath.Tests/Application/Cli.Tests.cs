@@ -49,6 +49,21 @@ public sealed class CliTests
     }
 
     [Test]
+    public async Task Should_Display_Help_Approval_Test()
+    {
+        var cli = new Cli([
+            new BirthDateResonanceStonesCliCommand(),
+            new EightLifePathStonesCliCommand()
+        ]);
+
+        var args = ConverToArgsArray("-h");
+
+        await cli.StartAsync(args);
+
+        Approvals.Verify(_writer.ToString());
+    }
+
+    [Test]
     public async Task Should_Execute_LifePath_Command_With_ddMMyyyy_Arg_Approval_Test()
     {
         var cli = new Cli([

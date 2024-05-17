@@ -1,6 +1,8 @@
-﻿namespace NumerologicalLifePath.Commands;
+﻿using NumerologicalLifePath.Sdk;
 
-public sealed class LifePathStoneCommand() : ACommand()
+namespace NumerologicalLifePath.Commands;
+
+public sealed class LifePathStoneCommand() : ACommand(), ICommandInputData
 {
     public override void Execute()
     {
@@ -9,7 +11,7 @@ public sealed class LifePathStoneCommand() : ACommand()
         _result = Treatments.DigitAggregate(string.Join("",inputDatas));
     }
 
-    protected override char[] GetInputDatas()
+    private char[] GetInputDatas()
     {
         var sum = 0;
         var result = new List<char>();

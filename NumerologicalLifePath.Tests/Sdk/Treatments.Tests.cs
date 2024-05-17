@@ -263,7 +263,7 @@ namespace NumerologicalLifePath.Tests.Sdk
         [TestCase(29, "Sodalite")]
         [TestCase(30, "Smoky Quartz")]
         [TestCase(31, "Moonstone")]
-        [TestCase(32, "Mokaïte")]
+        [TestCase(32, "Mokaite")]
         [TestCase(33, "Tourmalinated Quartz")]
         public void Should_Convert_Number_To_Stone(short number, string expectedStoneName)
         {

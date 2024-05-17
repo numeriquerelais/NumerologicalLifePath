@@ -10,13 +10,22 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extra", "Extra", "{F2B06FEC-E8FA-45FB-A468-E1B0BD51BB8B}"
 	ProjectSection(SolutionItems) = preProject
 		.config\dotnet-tools.json = .config\dotnet-tools.json
-		.github\workflows\PullRequest_CI.yml = .github\workflows\PullRequest_CI.yml
-		.github\workflows\Push_CI.yml = .github\workflows\Push_CI.yml
 		README.md = README.md
 		stryker-config.json = stryker-config.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumerologicalLifePath.Application", "NumerologicalLifePath.Application\NumerologicalLifePath.Application.csproj", "{BFD7AA53-3288-4CB1-86FD-562F813F59B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".gitHub", ".gitHub", "{3E3C4830-1AC8-4E66-9220-4B036DF32B92}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflow", "workflow", "{E9B4C52D-9235-417B-83E1-8A62B2B205B7}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\PullRequest_CI.yml = .github\workflows\PullRequest_CI.yml
+		.github\workflows\Push_CI.yml = .github\workflows\Push_CI.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +48,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E3C4830-1AC8-4E66-9220-4B036DF32B92} = {F2B06FEC-E8FA-45FB-A468-E1B0BD51BB8B}
+		{E9B4C52D-9235-417B-83E1-8A62B2B205B7} = {3E3C4830-1AC8-4E66-9220-4B036DF32B92}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C47562F2-B516-4330-970D-3D291F037381}

@@ -51,10 +51,11 @@ NumerologicalLifePath.Application birthStones -d "15/02/1955"
 
 ## Ressources complémentaires
 ### Documentation technique
+[Dependabot](https://medium.com/@nickfane/integrating-dependabot-into-your-net-core-project-on-github-3e3024bd3394)
 [Command Line](https://learn.microsoft.com/fr-fr/dotnet/standard/commandline/get-started-tutorial)
-
 [Clean CLI](https://github.com/NikiforovAll/clean-cli-todo-example/tree/main/src/CleanCli.Todo.Console)
 [ApprovalTests tutoial](https://lassiautio.com/2018/03/18/approvaltests-one-of-my-favorite-nuget/)
+[Cocumber](https://daniel-delimata.medium.com/specflow-cucumber-in-c-e642c63469b2)
 
 ### Sonar Cloud
 [SonarCloud Coverage failed](https://community.sonarsource.com/t/test-coverage-always-on-0-net-core-github-action/64347/11)

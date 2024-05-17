@@ -9,9 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumerologicalLifePath.Tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extra", "Extra", "{F2B06FEC-E8FA-45FB-A468-E1B0BD51BB8B}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build-validation.yml = .github\workflows\build-validation.yml
 		.config\dotnet-tools.json = .config\dotnet-tools.json
+		.github\workflows\Push_CI.yml = .github\workflows\Push_CI.yml
 		README.md = README.md
+		.github\workflows\PullRequest_CI.yml = .github\workflows\PullRequest_CI.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumerologicalLifePath.Application", "NumerologicalLifePath.Application\NumerologicalLifePath.Application.csproj", "{BFD7AA53-3288-4CB1-86FD-562F813F59B3}"

@@ -1,0 +1,29 @@
+{
+    "stryker-config": {
+        "solution": "NumerologicalLifePath.sln",
+        "project": "NumerologicalLifePath.Application.csproj",
+        "thresholds": {
+            "high": 90,
+            "low": 80,
+            "break": 80
+        },
+        "mutate": [
+            "**/*.cs"
+        ],
+        "reporters": [
+            "html",
+            "cleartext",
+            "progress",
+            "dashboard"
+        ],
+        "project-info": {
+            "module": "NumerologicalLifePath",
+            "name": "github.com/numeriquerelais/NumerologicalLifePath",
+            "version": "main"
+        },
+        "since": {
+            "target": "main",
+            "enabled": false
+        }
+    }
+}

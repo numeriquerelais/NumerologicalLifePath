@@ -8,8 +8,7 @@ public abstract class ACommand : ICommand
 
     public virtual void Execute() {
         if (Client == null) throw new InvalidOperationException("Client is null.");
-    }
-       
+    }       
 
     public void SetClient(Client client)
     {

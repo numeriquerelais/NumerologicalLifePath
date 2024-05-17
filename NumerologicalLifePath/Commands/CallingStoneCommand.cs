@@ -1,8 +1,6 @@
-﻿using NumerologicalLifePath.Sdk;
+﻿namespace NumerologicalLifePath.Commands;
 
-namespace NumerologicalLifePath.Commands;
-
-public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand(), ICommandInputData
+public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommandWithImputs()
 {
     private readonly bool _reduceAggregate = reduceAggregate;
     public override void Execute()
@@ -16,7 +14,7 @@ public sealed class CallingStoneCommand(bool reduceAggregate = true) : ACommand(
         _result = Treatments.CharAggregate(inputDatas, _reduceAggregate);
     }
 
-    private char[] GetInputDatas()
+    protected override char[] GetInputDatas()
     {
         string letters = string.Concat(string.Join("", Client?.FirstNames ?? []), string.Join("", Client?.LastNames ?? []));
 

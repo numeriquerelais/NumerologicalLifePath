@@ -1,9 +1,7 @@
-﻿using NumerologicalLifePath.Sdk;
+﻿namespace NumerologicalLifePath.Commands;
 
-namespace NumerologicalLifePath.Commands;
-
-public sealed class FoundationStoneCommand() : ACommand(), ICommandInputData
-{
+public sealed class FoundationStoneCommand() : ACommandWithImputs()
+{ 
     public override void Execute()
     {
         base.Execute();
@@ -11,10 +9,10 @@ public sealed class FoundationStoneCommand() : ACommand(), ICommandInputData
         _result = Treatments.CharAggregate(inputDatas);
     }
 
-    private char[] GetInputDatas()
+    protected override char[] GetInputDatas()
     {
         var result = new List<char>();
-        List<string> tmp = [];
+        List<string> tmp;
 
         if (Client?.FirstNames != null) { 
             tmp = Client.FirstNames.Where(f => !String.IsNullOrEmpty(f.Trim())).ToList();

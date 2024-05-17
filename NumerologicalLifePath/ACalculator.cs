@@ -1,12 +1,8 @@
 ﻿namespace NumerologicalLifePath;
 
-public abstract class ACalculator
+public abstract class ACalculator(Calculator calculator)
 {
-    protected readonly Calculator _calculator;
-    protected ACalculator(Calculator calculator)
-    {
-        _calculator = calculator;
-    }
+    protected readonly Calculator _calculator = calculator;
 
     public Dictionary<string, Int16> Calculate(Client clt)
     {

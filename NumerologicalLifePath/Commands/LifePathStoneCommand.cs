@@ -1,8 +1,6 @@
-﻿using NumerologicalLifePath.Sdk;
+﻿namespace NumerologicalLifePath.Commands;
 
-namespace NumerologicalLifePath.Commands;
-
-public sealed class LifePathStoneCommand() : ACommand(), ICommandInputData
+public sealed class LifePathStoneCommand() : ACommand()
 {
     public override void Execute()
     {

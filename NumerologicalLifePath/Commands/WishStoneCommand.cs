@@ -1,6 +1,6 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class WishStoneCommand() : ACommand()
+public sealed class WishStoneCommand() : ACommandWithImputs()
 {
     public override void Execute()
     {
@@ -9,7 +9,7 @@ public sealed class WishStoneCommand() : ACommand()
         _result = Treatments.CharAggregate(inputDatas);
     }
 
-    private char[] GetInputDatas()
+    protected override char[] GetInputDatas()
     {
         var result = new List<char>();
 

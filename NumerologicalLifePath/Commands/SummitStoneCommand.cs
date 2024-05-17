@@ -1,8 +1,6 @@
-﻿using NumerologicalLifePath.Sdk;
+﻿namespace NumerologicalLifePath.Commands;
 
-namespace NumerologicalLifePath.Commands;
-
-public sealed class SummitStoneCommand() : ACommand(), ICommandInputData
+public sealed class SummitStoneCommand() : ACommandWithImputs()
 {
     public override void Execute()
     {
@@ -11,7 +9,7 @@ public sealed class SummitStoneCommand() : ACommand(), ICommandInputData
         _result = Treatments.CharAggregate(inputDatas);
     }
 
-    private char[] GetInputDatas()
+    protected override char[] GetInputDatas()
     {
         var result = new List<char>();
 

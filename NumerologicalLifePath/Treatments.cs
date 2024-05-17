@@ -75,7 +75,7 @@ public static class Treatments
         "Sodalite",
         "Smoky Quartz",
         "Moonstone",
-        "Mokaïte",
+        "Mokaite",
         "Tourmalinated Quartz",
         ];
 

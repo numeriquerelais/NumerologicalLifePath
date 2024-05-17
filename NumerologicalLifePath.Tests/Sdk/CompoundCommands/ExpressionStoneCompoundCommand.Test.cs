@@ -9,7 +9,7 @@ public sealed class ExpressionStoneCompoundCommandTests
     [TestCase("Diego Armando", "Maradona Franco", 5)]
     public void Should_Execute_Commands(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
         var command = new ExpressionStoneCompoundCommand();
         command.SetClient(clt);
         command.Execute();
@@ -21,7 +21,7 @@ public sealed class ExpressionStoneCompoundCommandTests
     [TestCase("Diego Armando", "Maradona Franco", 122)]
     public void Should_Execute_Commands_Not_Reduced(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
         var command = new ExpressionStoneCompoundCommand(false);
         command.SetClient(clt);
         command.Execute();
@@ -31,7 +31,7 @@ public sealed class ExpressionStoneCompoundCommandTests
     [Test]
     public void Should_Not_Execute_Commands()
     {
-        Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
 
         var command = new ExpressionStoneCompoundCommand();
         command.SetClient(clt);

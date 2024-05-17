@@ -1,7 +1,8 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class PersonnalityStoneCommand(bool reduceAggrgate = true) : ACommand()
+public sealed class PersonnalityStoneCommand(bool reduceAggrgate = true) : ACommandWithImputs()
 {
+
     private readonly bool _reduceAggrgate = reduceAggrgate;
 
     public override void Execute()
@@ -17,7 +18,8 @@ public sealed class PersonnalityStoneCommand(bool reduceAggrgate = true) : AComm
 
     protected override char[] GetInputDatas()
     {
-        var letters = (string.Join("", Client!.FirstNames) + string.Join("", Client!.LastNames)).ToCharArray().Where(letter => Treatments.IsConsonant(letter)).ToArray();
-        return [.. letters];
+        string letters = string.Concat(string.Join("", Client?.FirstNames ?? []), string.Join("", Client?.LastNames ?? []));
+        var results = letters.ToCharArray().Where(letter => Treatments.IsConsonant(letter)).ToArray();
+        return [.. results];
     }
 }

@@ -12,7 +12,7 @@ public sealed class CallingStoneCommandTests
     [TestCase("Ma", "Pa", 2)]
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
         var command = new CallingStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
@@ -23,7 +23,7 @@ public sealed class CallingStoneCommandTests
     [TestCase("John", "Doe", 17)]
     public void Should_Execute_Command_With_Not_Reduced_Result(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
         var command = new CallingStoneCommand(false) { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
@@ -32,13 +32,25 @@ public sealed class CallingStoneCommandTests
     [Test]
     public void Should_Not_Execute_Command()
     {
-        Client clt = new([.. string.Empty.Split("")], [.. string.Empty.Split("")], new DateOnly());
+        Client clt = new(new DateOnly());
 
         var command = new CallingStoneCommand() { Client = clt };
 
         Check.ThatCode(() => command.Execute())
                .Throws<ArgumentException>()
-               .WithMessage("No Vowel found.");
+               .WithMessage("No vowel found.");
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_FirstName_And_LastName()
+    {
+        Client clt = new(new DateOnly());
+
+        var command = new CallingStoneCommand() { Client = clt };
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<ArgumentException>()
+               .WithMessage("No vowel found.");
     }
 
     [Test]

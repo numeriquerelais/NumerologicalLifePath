@@ -10,7 +10,7 @@ public sealed class PersonnalityStoneCommandTests
     [TestCase("Joe", "Soe", 2)]
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
         var command = new PersonnalityStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
@@ -20,7 +20,7 @@ public sealed class PersonnalityStoneCommandTests
     [TestCase("Diego Armando", "Maradona Franco", 78)]
     public void Should_Execute_Command_With_Not_Reduced_Result(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new([.. firstNames.Split(" ")], [.. lastNames.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
         var command = new PersonnalityStoneCommand(false) { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
@@ -30,7 +30,7 @@ public sealed class PersonnalityStoneCommandTests
     [Test]
     public void Should_Not_Execute_Command()
     {
-        Client clt = new([.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")], new DateOnly());
+        Client clt = new(new DateOnly(), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
 
         var command = new PersonnalityStoneCommand() { Client = clt };
 
@@ -38,6 +38,19 @@ public sealed class PersonnalityStoneCommandTests
                .Throws<ArgumentException>()
                .WithMessage("No consonant found.");
     }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_FirstName_And_LastName()
+    {
+        Client clt = new(new DateOnly());
+
+        var command = new PersonnalityStoneCommand() { Client = clt };
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<ArgumentException>()
+               .WithMessage("No consonant found.");
+    }
+
 
     [Test]
     public void Should_Not_Execute_Command_Without_Client()

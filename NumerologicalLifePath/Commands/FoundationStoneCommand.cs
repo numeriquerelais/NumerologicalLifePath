@@ -1,7 +1,7 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class FoundationStoneCommand() : ACommand()
-{
+public sealed class FoundationStoneCommand() : ACommandWithImputs()
+{ 
     public override void Execute()
     {
         base.Execute();
@@ -12,17 +12,24 @@ public sealed class FoundationStoneCommand() : ACommand()
     protected override char[] GetInputDatas()
     {
         var result = new List<char>();
-            
-        try { 
-            foreach (var firstName in Client!.FirstNames)
-                result.Add(firstName[0]);
+        List<string> tmp;
 
-            foreach (var lastName in Client!.LastNames)
+        if (Client?.FirstNames != null) { 
+            tmp = Client.FirstNames.Where(f => !String.IsNullOrEmpty(f.Trim())).ToList();
+            foreach (var firstName in tmp)
+                result.Add(firstName[0]);
+        }
+
+        if (Client?.LastNames != null)
+        {
+            tmp = Client.LastNames.Where(f => !String.IsNullOrEmpty(f.Trim())).ToList();
+            foreach (var lastName in tmp)
                 result.Add(lastName[0]);
         }
-        catch(IndexOutOfRangeException) {
+
+        if (result.Count == 0)
             throw new ArgumentException("Client first names and/or last names lists are empties.");
-        }
+
         return [.. result];
     }
 }

@@ -22,10 +22,10 @@ namespace NumerologicalLifePath.Sdk.Calculators.Tests
             var calculator = new EightLifePathStones();
             var results = calculator.Calculate(
                 new Client(
-                    [.. firstNames.Split(" ")],
-                    [.. lastNames.Split(" ")],
                     new DateOnly(year, month, day)
-                ));
+,
+                    [.. firstNames.Split(" ")],
+                    [.. lastNames.Split(" ")]));
 
             Dictionary<string, short> expectedResults = new()
         {
@@ -58,10 +58,10 @@ namespace NumerologicalLifePath.Sdk.Calculators.Tests
             var calculator = new EightLifePathStones();
             var results = calculator.CalculateStones(
                 new Client(
-                    [.. firstNames.Split(" ")],
-                    [.. lastNames.Split(" ")],
                     new DateOnly(year, month, day)
-                ));
+,
+                    [.. firstNames.Split(" ")],
+                    [.. lastNames.Split(" ")]));
 
             Dictionary<string, string> expectedResults = new()
         {

@@ -15,17 +15,11 @@ public sealed class BirthDateResonanceStones : ACalculator
 
     public Dictionary<string, Int16> Calculate(DateOnly birthdate)
     {
-        return Calculate(new Client(
-            [.. string.Empty.Split("")],
-            [.. string.Empty.Split("")],
-            birthdate));
+        return Calculate(new Client(birthdate));
     }
 
     public Dictionary<string, string> CalculateStones(DateOnly birthdate)
     {
-        return CalculateStones(new Client(
-            [.. string.Empty.Split("")],
-            [.. string.Empty.Split("")],
-            birthdate));
+        return CalculateStones(new Client(birthdate));
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace NumerologicalLifePath.Commands;
 
-public sealed class SummitStoneCommand() : ACommand()
+public sealed class SummitStoneCommand() : ACommandWithImputs()
 {
     public override void Execute()
     {
@@ -13,18 +13,22 @@ public sealed class SummitStoneCommand() : ACommand()
     {
         var result = new List<char>();
 
-        try
+        if (Client?.FirstNames != null)
         {
-            foreach (var firstName in Client!.FirstNames)
+            var firstNames = Client.FirstNames.Where(f => !String.IsNullOrWhiteSpace(f.Trim())).ToList();
+            foreach (var firstName in firstNames)
                 result.Add(firstName[^1]);
+        }
 
-            foreach (var lastName in Client!.LastNames)
+        if (Client?.LastNames != null)
+        {
+            var lastNames = Client.LastNames.Where(l => !String.IsNullOrWhiteSpace(l.Trim())).ToList();
+            foreach (var lastName in lastNames)
                 result.Add(lastName[^1]);
         }
-        catch (IndexOutOfRangeException)
-        {
+
+        if (result.Count == 0)
             throw new ArgumentException("Client first names and/or last names lists are empties.");
-        }
 
         return [.. result];
     }

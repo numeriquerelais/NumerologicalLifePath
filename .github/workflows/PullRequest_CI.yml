@@ -57,6 +57,11 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
       - name: Install Dotnet Coverage
         run : dotnet tool install --global dotnet-coverage
 
@@ -78,7 +83,7 @@ jobs:
           dotnet-coverage collect 'dotnet test --no-restore --verbosity normal' -f xml -o 'coverage.xml'
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ env.SONAR_TOKEN }}"
 
-      - name: Stryker mutator analiyze
+      - name: Stryker mutator analyze
         env:
          STRYKER_TOKEN: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
         shell: powershell

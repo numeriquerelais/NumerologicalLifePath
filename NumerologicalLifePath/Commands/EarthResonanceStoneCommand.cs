@@ -7,6 +7,4 @@ public sealed class EarthResonanceStoneCommand() : ACommand()
         base.Execute();
         _result = ((Int16)Client!.BirthDate.Year).NumerologicalResonance();
     }
-
-    protected override char[] GetInputDatas() => throw new NotImplementedException();
 }

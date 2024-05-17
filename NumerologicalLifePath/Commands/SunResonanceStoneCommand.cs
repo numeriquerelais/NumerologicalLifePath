@@ -7,6 +7,4 @@ public sealed class SunResonanceStoneCommand() : ACommand()
         base.Execute();
         _result = ((Int16)Client!.BirthDate.Month).NumerologicalResonance();
     }
-
-    protected override char[] GetInputDatas() => throw new NotImplementedException();
 }

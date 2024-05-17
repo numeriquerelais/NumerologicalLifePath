@@ -7,13 +7,15 @@
 
 Le but de ce projet est de prendre du plaisir, d'apprendre et de faire un travail de qualité en mettant en place :
 - Les règles de calcul numérologique à partir de la date de naissance et des noms et prénoms d'une personne pour déterminer :
-  - les pierres de son chemin de vie 
-  - les chiffres en résonance vibratoire avec sa date de naissance
-  - la grille d'inclusion
+  - [x] les pierres de son chemin de vie 
+  - [x] les chiffres en résonance vibratoire avec sa date de naissance
+  - [ ] la grille d'inclusion
 - Découvrir :
-  - la mise en place dans github d'une CI à partir de github actions
-  - l'interpréteur de ligne de commande .Net
-  - ApprovalTests
+  - [x] la mise en place dans github d'une CI à partir de github actions
+	- [x] dependabot
+  - [x] l'interpréteur de ligne de commande .Net
+  - [x] ApprovalTests
+  - [ ] Specflow
 
 ## Utilisation
 ### Calcul des pierres du chemin de vie
@@ -72,4 +74,4 @@ https://community.sonarsource.com/t/net-github-actions-0-coverage/114718
 
 
 ### Auteur
-https://www.linkedin.com/in/cyril-cophignon-b58b5a5b/
+<a href="https://www.linkedin.com/in/cyril-cophignon-b58b5a5b/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>

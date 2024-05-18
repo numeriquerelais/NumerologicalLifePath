@@ -2,8 +2,16 @@ version: 2
 updates:
   - package-ecosystem: "nuget"
     directory: "/"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      test-dependencies:
+        dependency-type: "development"
+        exclude-patterns:
+          - "System.*"
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 5
   - package-ecosystem: "github-actions"
     directory: ".github/"
     schedule:

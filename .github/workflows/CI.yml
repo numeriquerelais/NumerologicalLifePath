@@ -1,6 +1,7 @@
 name: build, test and analyze
 
 on:
+  push:
   pull_request:
   workflow_dispatch:
     branches: [ main ]
@@ -22,9 +23,36 @@ permissions:
   pages: write
 
 jobs:
+  quick-linux-build-and-test:
+
+    name: quick-linux-build-and-test
+    runs-on: ubuntu-latest 
+    if: github.event_name != 'pull_request'
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        cache: true
+
+    - name: Install dependencies
+      with:
+        cache: true
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+
   build-and-analyze:
+
     name: Build and analyze
     runs-on: windows-latest
+
     steps:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -61,11 +89,16 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+          cache: true
 
       - name: Install Dotnet Coverage
+        with:
+          cache: true
         run : dotnet tool install --global dotnet-coverage
 
       - name: Install Dotnet Stryker Mutator
+        with:
+          cache: true
         run : dotnet tool install --global dotnet-stryker
 
       - name: Install dependencies

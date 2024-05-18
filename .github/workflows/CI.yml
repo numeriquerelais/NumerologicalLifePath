@@ -67,11 +67,13 @@ jobs:
           cache: true
 
       - name: Install Dotnet Coverage
+        uses: actions/cache@v3
         with:
           cache: true
         run : dotnet tool install --global dotnet-coverage
 
       - name: Install Dotnet Stryker Mutator
+        uses: actions/cache@v3
         with:
           cache: true
         run : dotnet tool install --global dotnet-stryker

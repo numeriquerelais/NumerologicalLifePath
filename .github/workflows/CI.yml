@@ -68,10 +68,12 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-          run : |
-            dotnet tool install --global dotnet-coverage dotnet-stryker
-            dotnet tool restore
-            dotnet restore
+     
+      - name: Install tools and restore
+        run: |
+          dotnet tool install --global dotnet-coverage dotnet-stryker
+          dotnet tool restore
+          dotnet restore
 
       - name: Build, test and analyze
         env:

@@ -65,21 +65,11 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           cache: true
-
-      - name: Install Dotnet Coverage
-        uses: actions/cache@v3
-        with:
-          cache: true
-        run : dotnet tool install --global dotnet-coverage
-
-      - name: Install Dotnet Stryker Mutator
-        uses: actions/cache@v3
-        with:
-          cache: true
-        run : dotnet tool install --global dotnet-stryker
-
-      - name: Install dependencies
-        run: dotnet restore
+          run : |
+            dotnet tool install --global dotnet-coverage
+            dotnet tool install --global dotnet-stryker
+            dotnet tool restore
+            dotnet restore
 
       - name: Build, test and analyze
         env:
@@ -98,6 +88,4 @@ jobs:
          STRYKER_TOKEN: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
         shell: powershell
         working-directory: ${{ github.workspace }}
-        run: |
-          dotnet tool restore 
-          dotnet stryker --reporter dashboard --dashboard-api-key ${{ env.STRYKER_TOKEN }}
+        run: dotnet stryker --reporter dashboard --dashboard-api-key ${{ env.STRYKER_TOKEN }}

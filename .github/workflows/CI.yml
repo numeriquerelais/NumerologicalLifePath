@@ -1,9 +1,9 @@
 name: build, test and analyze
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
-  workflow_dispatch:
     branches: [ main ]
     paths:
     - '**.cs'

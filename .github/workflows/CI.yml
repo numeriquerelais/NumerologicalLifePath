@@ -71,7 +71,8 @@ jobs:
      
       - name: Install tools and restore
         run: |
-          dotnet tool install --global dotnet-coverage dotnet-stryker
+          dotnet tool install --global dotnet-coverage
+          dotnet tool install --global dotnet-stryker
           dotnet tool restore
           dotnet restore
 

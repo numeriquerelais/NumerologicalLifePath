@@ -1,4 +1,4 @@
-name: build, test and analyze
+name: build, test and analyze v2
 
 on:
   workflow_dispatch:

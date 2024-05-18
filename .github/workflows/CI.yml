@@ -3,6 +3,10 @@ name: build, test and analyze
 on:
   workflow_dispatch:
   push:
+    branches: [ main ]
+    paths:
+    - '**.cs'
+    - '**.csproj'
   pull_request:
     branches: [ main ]
     paths:
@@ -64,10 +68,8 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-          cache: true
           run : |
-            dotnet tool install --global dotnet-coverage
-            dotnet tool install --global dotnet-stryker
+            dotnet tool install --global dotnet-coverage dotnet-stryker
             dotnet tool restore
             dotnet restore
 

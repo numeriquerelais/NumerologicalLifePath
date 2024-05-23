@@ -1,6 +1,7 @@
-﻿using NumerologicalLifePath.Commands;
+﻿using NumerologicalLifePath.Sdk.Abstractions;
+using NumerologicalLifePath.Sdk.Commands.ResonanceStone;
 
-namespace NumerologicalLifePath.Calculators;
+namespace NumerologicalLifePath.Sdk.Calculators;
 
 public sealed class BirthDateResonanceStones : ACalculator
 {
@@ -13,7 +14,7 @@ public sealed class BirthDateResonanceStones : ACalculator
         ]))
     { }
 
-    public Dictionary<string, Int16> Calculate(DateOnly birthdate)
+    public Dictionary<string, short> Calculate(DateOnly birthdate)
     {
         return Calculate(new Client(birthdate));
     }

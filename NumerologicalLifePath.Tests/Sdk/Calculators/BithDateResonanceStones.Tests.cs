@@ -1,6 +1,6 @@
-﻿using NumerologicalLifePath.Calculators;
+﻿using NumerologicalLifePath.Sdk.Calculators;
 
-namespace NumerologicalLifePath.Sdk.Calculators.Tests;
+namespace NumerologicalLifePath.Tests.Sdk.Calculators;
 using NFluent;
 
 public sealed class BirthDateResonanceStonesTests

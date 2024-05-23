@@ -2,23 +2,27 @@
 using ApprovalTests.Reporters;
 using NFluent;
 using NSubstitute;
+using NumerologicalLifePath.Application;
+using NumerologicalLifePath.Application.CliCommands;
 using NumerologicalLifePath.Application.CliCommands.Interfaces;
 using System.CommandLine.Parsing;
 
 
-namespace NumerologicalLifePath.Application.CliCommands;
+namespace NumerologicalLifePath.Tests.Application;
 
 [UseReporter(typeof(DiffReporter))]
 public sealed class CliTests
 {
     private StringWriter _writer;
 
-    private static string[] ConverToArgsArray(string commandLine, string blankCharSubstitute = "#") {
+    private static string[] ConverToArgsArray(string commandLine, string blankCharSubstitute = "#")
+    {
         return commandLine.Split(" ").Select(elmt => elmt.Replace(blankCharSubstitute, " ")).ToArray();
     }
 
     [SetUp]
-    public void Setup() {
+    public void Setup()
+    {
         _writer = new();
         Console.SetOut(_writer);
     }
@@ -43,7 +47,7 @@ public sealed class CliTests
     {
         var fakeCmd = Substitute.For<ICliCommand>();
         Check
-            .ThatCode(()=> new Cli([fakeCmd]))
+            .ThatCode(() => new Cli([fakeCmd]))
             .Throws<ArgumentException>()
             .WithMessage("Not supported command type ObjectProxy.");
     }
@@ -101,7 +105,7 @@ public sealed class CliTests
         var args = ConverToArgsArray("lifePath -f Simon#Roger -l Federer#Connors -d 15,02,1955");
 
         Check
-            .ThatCode(async() => await cli.StartAsync(args))
+            .ThatCode(async () => await cli.StartAsync(args))
         .Throws<CannotParseArugmentException>()
             .WithMessage("Cannot parse argument '15,02,1955' as expected type 'System.DateOnly'.");
     }

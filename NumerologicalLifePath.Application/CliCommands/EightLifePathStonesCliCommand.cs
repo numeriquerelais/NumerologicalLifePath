@@ -1,6 +1,7 @@
 ﻿using NumerologicalLifePath.Application.CliCommands.Commands;
 using NumerologicalLifePath.Application.CliCommands.Wrappers;
-using NumerologicalLifePath.Calculators;
+using NumerologicalLifePath.Sdk;
+using NumerologicalLifePath.Sdk.Calculators;
 using System.CommandLine;
 
 namespace NumerologicalLifePath.Application.CliCommands;

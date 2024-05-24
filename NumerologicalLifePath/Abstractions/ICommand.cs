@@ -1,5 +1,5 @@
 ﻿namespace NumerologicalLifePath.Sdk.Abstractions;
-public interface ICommand<T>
+public interface ICommand<out T>
 {
 
     public T Result { get; }

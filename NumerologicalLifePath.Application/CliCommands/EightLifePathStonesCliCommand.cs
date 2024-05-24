@@ -1,6 +1,7 @@
 ﻿using NumerologicalLifePath.Application.CliCommands.Commands;
 using NumerologicalLifePath.Application.CliCommands.Wrappers;
-using NumerologicalLifePath.Calculators;
+using NumerologicalLifePath.Sdk;
+using NumerologicalLifePath.Sdk.Calculators;
 using System.CommandLine;
 
 namespace NumerologicalLifePath.Application.CliCommands;
@@ -30,7 +31,7 @@ public sealed class EightLifePathStonesCliCommand : ThreeOptionsCliCommandWrappe
                 { IsRequired = true },
                 delegate (string firstNames, string lastNames, DateOnly birthdate)
                 {
-                    var clt = new Client(birthdate, [.. firstNames.Split(",")], [.. lastNames.Split(",")]);
+                    var clt = new Client(birthdate, firstNames, lastNames, ",");
                     var calculator = new EightLifePathStones();
                     var digits = calculator.Calculate(clt);
                     var infos = string.Join("\r\n",

@@ -1,4 +1,5 @@
 using NFluent;
+using NumerologicalLifePath.Sdk;
 using System.Text;
 
 namespace NumerologicalLifePath.Tests.Sdk

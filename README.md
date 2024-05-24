@@ -15,7 +15,6 @@ Le but de ce projet est de prendre du plaisir, d'apprendre et de faire un travai
 	- [x] dependabot
   - [x] l'interpréteur de ligne de commande .Net
   - [x] ApprovalTests
-  - [ ] Specflow
 
 ## Utilisation
 ### Calcul des pierres du chemin de vie
@@ -57,21 +56,17 @@ NumerologicalLifePath.Application birthStones -d "15/02/1955"
 [Command Line](https://learn.microsoft.com/fr-fr/dotnet/standard/commandline/get-started-tutorial)
 [Clean CLI](https://github.com/NikiforovAll/clean-cli-todo-example/tree/main/src/CleanCli.Todo.Console)
 [ApprovalTests tutoial](https://lassiautio.com/2018/03/18/approvaltests-one-of-my-favorite-nuget/)
-[Cocumber](https://daniel-delimata.medium.com/specflow-cucumber-in-c-e642c63469b2)
 
 ### Sonar Cloud
 [SonarCloud Coverage failed](https://community.sonarsource.com/t/test-coverage-always-on-0-net-core-github-action/64347/11)
 [SonarCloud YML](https://stackoverflow.com/questions/58871955/sonarcloud-code-coverage-remains-0-0-in-github-actions-build)
 [SonarCloud YML sample](https://github.com/brenordv/validator-dot-net/blob/master/.github/workflows/build.yml)
+[SonarCloud forum](https://community.sonarsource.com/t/net-github-actions-0-coverage/114718)
 
 ### Stryker Mutator
 [help](https://stryker-mutator.io/docs/General/dashboard/#send-your-first-report)
 [my repo](https://dashboard.stryker-mutator.io/repos/numeriquerelais)
 [tutorial](https://medium.com/@hamed.shirbandi/mutation-testing-with-stryker-in-net-projects-ff1f05ddce8f)
-
-### Forum
-https://community.sonarsource.com/t/net-github-actions-0-coverage/114718
-
 
 ### Auteur
 <a href="https://www.linkedin.com/in/cyril-cophignon-b58b5a5b/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>

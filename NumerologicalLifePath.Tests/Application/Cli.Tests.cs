@@ -48,7 +48,7 @@ public sealed class CliTests
             .WithMessage("Not supported command type ObjectProxy.");
     }
 
-    [Test]
+    [Test, Category("E2E")]
     public async Task Should_Display_Help_Approval_Test()
     {
         var cli = new Cli([
@@ -63,7 +63,7 @@ public sealed class CliTests
         Approvals.Verify(_writer.ToString());
     }
 
-    [Test]
+    [Test, Category("E2E")]
     public async Task Should_Execute_LifePath_Command_With_ddMMyyyy_Arg_Approval_Test()
     {
         var cli = new Cli([
@@ -77,7 +77,7 @@ public sealed class CliTests
         Approvals.Verify(_writer.ToString());
     }
 
-    [Test]
+    [Test, Category("E2E")]
     public async Task Should_Display_Help_Of_LifePath_Command_Approval_Test()
     {
         var cli = new Cli([
@@ -106,7 +106,7 @@ public sealed class CliTests
             .WithMessage("Cannot parse argument '15,02,1955' as expected type 'System.DateOnly'.");
     }
 
-    [Test]
+    [Test, Category("E2E")]
     public async Task Should_Execute_BirthDateResonance_Command_With_ddMMyyyy_Approval_Test()
     {
         var cli = new Cli([
@@ -120,7 +120,7 @@ public sealed class CliTests
         Approvals.Verify(_writer.ToString());
     }
 
-    [Test]
+    [Test, Category("E2E")]
     public async Task Should_Execute_BirthDateResonance_Command_With_MMddyyyy_Approval_Test()
     {
         var cli = new Cli([
@@ -134,7 +134,7 @@ public sealed class CliTests
         Approvals.Verify(_writer.ToString());
     }
 
-    [Test]
+    [Test, Category("E2E")]
     public async Task Should_Display_Help_Of_BirthDateResonance_Command_Approval_Test()
     {
         var cli = new Cli([
@@ -148,7 +148,7 @@ public sealed class CliTests
         Approvals.Verify(_writer.ToString());
     }
 
-    [Test]
+    [Test, Category("E2E")]
     public async Task Should_Execute_BirthDateResonance_Command_With_yyyyMMdd_Approval_Test()
     {
         var cli = new Cli([
@@ -161,6 +161,7 @@ public sealed class CliTests
 
         Approvals.Verify(_writer.ToString());
     }
+
     [Test]
     public void Should_Not_Execute_BirthDateResonance_Command_With_Not_Parsable_DateOnly()
     {

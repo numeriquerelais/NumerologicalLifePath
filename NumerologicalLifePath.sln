@@ -23,9 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".gitHub", ".gitHub", "{3E3C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflow", "workflow", "{E9B4C52D-9235-417B-83E1-8A62B2B205B7}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\PullRequest_CI.yml = .github\workflows\PullRequest_CI.yml
-		.github\workflows\Push_CI.yml = .github\workflows\Push_CI.yml
+		.github\workflows\CI.yml = .github\workflows\CI.yml
+		.github\workflows\QuickBuildCI.yml = .github\workflows\QuickBuildCI.yml
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{51D11A57-C66D-4D45-89E0-D839C8B45BF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{D7439BEC-7AE3-4DA0-A89A-8EA174C78DF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{02AD7F54-3F05-4A32-A98D-1CA0E507F075} = {D7439BEC-7AE3-4DA0-A89A-8EA174C78DF9}
+		{791FB3E3-26EB-4177-A377-8F468D0E7882} = {51D11A57-C66D-4D45-89E0-D839C8B45BF6}
+		{BFD7AA53-3288-4CB1-86FD-562F813F59B3} = {D7439BEC-7AE3-4DA0-A89A-8EA174C78DF9}
 		{3E3C4830-1AC8-4E66-9220-4B036DF32B92} = {F2B06FEC-E8FA-45FB-A468-E1B0BD51BB8B}
 		{E9B4C52D-9235-417B-83E1-8A62B2B205B7} = {3E3C4830-1AC8-4E66-9220-4B036DF32B92}
 	EndGlobalSection

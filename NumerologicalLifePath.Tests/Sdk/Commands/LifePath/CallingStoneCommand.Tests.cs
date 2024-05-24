@@ -54,7 +54,7 @@ public sealed class CallingStoneCommandTests
     }
 
     [Test]
-    public void Should_Not_Execute_Command_WithoutClient()
+    public void Should_Not_Execute_Command_Without_Client()
     {
         var command = new CallingStoneCommand();
 

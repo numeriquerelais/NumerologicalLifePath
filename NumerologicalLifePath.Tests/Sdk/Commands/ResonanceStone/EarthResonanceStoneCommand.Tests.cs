@@ -30,7 +30,7 @@ public sealed class EarthResonanceStoneCommandTests
     }
 
     [Test]
-    public void Should_Not_Execute_Command_WithoutClient()
+    public void Should_Not_Execute_Command_Without_Client()
     {
         var command = new EarthResonanceStoneCommand();
 

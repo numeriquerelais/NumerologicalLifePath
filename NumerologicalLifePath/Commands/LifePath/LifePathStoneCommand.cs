@@ -2,7 +2,7 @@
 
 namespace NumerologicalLifePath.Sdk.Commands.LifePath;
 
-public sealed class LifePathStoneCommand() : ACommand()
+public sealed class LifePathStoneCommand() : ACommand<short>()
 {
     public override void Execute()
     {

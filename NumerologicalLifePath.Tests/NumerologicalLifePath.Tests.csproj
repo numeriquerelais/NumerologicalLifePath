@@ -35,8 +35,4 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Sdk\Command\InclusionGrid\" />
-  </ItemGroup>
-
 </Project>

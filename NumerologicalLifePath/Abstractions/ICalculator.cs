@@ -1,8 +1,8 @@
 ﻿namespace NumerologicalLifePath.Sdk.Abstractions;
 
-public class Calculator(ICommand[] commands)
+public class Calculator(ICommand<short>[] commands)
 {
-    private readonly ICommand[] _commands = commands;
+    private readonly ICommand<short>[] _commands = commands;
     private bool run = false;
 
     public void SetClient(Client client)

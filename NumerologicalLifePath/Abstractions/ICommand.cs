@@ -1,8 +1,8 @@
 ﻿namespace NumerologicalLifePath.Sdk.Abstractions;
-public interface ICommand
+public interface ICommand<T>
 {
 
-    public short Result { get; }
+    public T Result { get; }
 
     public void SetClient(Client client);
 

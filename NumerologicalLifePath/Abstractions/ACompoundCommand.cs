@@ -1,7 +1,7 @@
 ﻿namespace NumerologicalLifePath.Sdk.Abstractions;
-public abstract class ACompoundCommand(List<ICommand> commands, bool reduceAggregate) : ICommand
+public abstract class ACompoundCommand(List<ICommand<short>> commands, bool reduceAggregate) : ICommand<short>
 {
-    protected readonly List<ICommand> _commands = commands;
+    protected readonly List<ICommand<short>> _commands = commands;
     protected readonly bool _reduceAggregate = reduceAggregate;
 
     protected short _result = -1;

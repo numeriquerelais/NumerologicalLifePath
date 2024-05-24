@@ -2,7 +2,7 @@
 
 namespace NumerologicalLifePath.Sdk.Commands.ResonanceStone;
 
-public sealed class GlobalResonanceStoneCommand() : ACommand()
+public sealed class GlobalResonanceStoneCommand() : ACommand<short>()
 {
     public override void Execute()
     {

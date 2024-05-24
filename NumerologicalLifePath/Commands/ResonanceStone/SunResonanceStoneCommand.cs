@@ -7,6 +7,10 @@ public sealed class SunResonanceStoneCommand() : ACommand<short>()
     public override void Execute()
     {
         base.Execute();
-        _result = ((short)Client!.BirthDate.Month).NumerologicalResonance();
+
+        if (!Client!.BirthDate.HasValue)
+            throw new InvalidOperationException("The birthdate is null.");
+        
+        _result = ((short)Client.BirthDate.Value.Month).NumerologicalResonance();
     }
 }

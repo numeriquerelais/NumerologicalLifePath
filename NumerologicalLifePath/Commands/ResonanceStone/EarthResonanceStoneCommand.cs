@@ -7,6 +7,9 @@ public sealed class EarthResonanceStoneCommand() : ACommand<short>()
     public override void Execute()
     {
         base.Execute();
-        _result = ((short)Client!.BirthDate.Year).NumerologicalResonance();
+        if (!Client!.BirthDate.HasValue)
+            throw new InvalidOperationException("The birthdate is null.");
+
+        _result = ((short)Client.BirthDate.Value.Year).NumerologicalResonance();
     }
 }

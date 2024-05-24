@@ -11,7 +11,7 @@ public sealed class WishStoneCommandTests
     [TestCase("Diego Irmando", "Miradona Frinco", 9)]
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
+        Client clt = new(firstNames, lastNames);
         var command = new WishStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
@@ -20,7 +20,7 @@ public sealed class WishStoneCommandTests
     [Test]
     public void Should_Not_Execute_Command()
     {
-        Client clt = new(new DateOnly(), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
+        Client clt = new(string.Empty, string.Empty);
 
         var command = new WishStoneCommand() { Client = clt };
 

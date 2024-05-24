@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NumerologicalLifePath.Sdk;
+using NumerologicalLifePath.Sdk.Commands.LifePath;
 using NumerologicalLifePath.Sdk.Commands.ResonanceStone;
 using System.Globalization;
 
@@ -23,10 +24,21 @@ public sealed class EarthResonanceStoneCommandTests
                            CultureInfo.InvariantCulture,
                            DateTimeStyles.None,
                            out var birthDate);
-        Client clt = new(new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
+        Client clt = new(new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
         var command = new EarthResonanceStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_BirthDate()
+    {
+        Client clt = new(string.Empty, string.Empty);
+        var command = new EarthResonanceStoneCommand() { Client = clt };
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<InvalidOperationException>()
+               .WithMessage("The birthdate is null.");
     }
 
     [Test]

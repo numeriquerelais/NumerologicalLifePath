@@ -12,7 +12,7 @@ public sealed class CallingStoneCommandTests
     [TestCase("Ma", "Pa", 2)]
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
+        Client clt = new(new DateOnly(), firstNames, lastNames);
         var command = new CallingStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
@@ -23,7 +23,7 @@ public sealed class CallingStoneCommandTests
     [TestCase("John", "Doe", 17)]
     public void Should_Execute_Command_With_Not_Reduced_Result(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
+        Client clt = new(new DateOnly(), firstNames, lastNames);
         var command = new CallingStoneCommand(false) { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);

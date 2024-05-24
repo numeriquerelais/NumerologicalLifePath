@@ -7,6 +7,10 @@ public sealed class GlobalResonanceStoneCommand() : ACommand<short>()
     public override void Execute()
     {
         base.Execute();
-        _result = Client!.BirthDate.NumerologicalResonance();
+
+        if (!Client!.BirthDate.HasValue)
+            throw new InvalidOperationException("The birthdate is null.");
+
+        _result = Client.BirthDate.Value.NumerologicalResonance();
     }
 }

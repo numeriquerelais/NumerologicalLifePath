@@ -16,9 +16,12 @@ public sealed class LifePathStoneCommand() : ACommand<short>()
         var sum = 0;
         var result = new List<char>();
 
-        sum += Client!.BirthDate.Day;
-        sum += Client!.BirthDate.Month;
-        sum += Client!.BirthDate.Year;
+        if (!Client!.BirthDate.HasValue)
+            throw new InvalidOperationException("The birthdate is null.");
+
+        sum += Client.BirthDate.Value.Day;
+        sum += Client.BirthDate.Value.Month;
+        sum += Client.BirthDate.Value.Year;
 
         foreach (var digit in sum.ToString())
             result.Add(digit);

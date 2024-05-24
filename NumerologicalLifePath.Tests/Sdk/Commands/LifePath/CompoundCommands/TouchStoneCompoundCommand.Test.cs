@@ -10,7 +10,7 @@ public sealed class TouchStoneCompoundCommandTests
     [TestCase("Diego Armando", "Maradona Franco", 17)]
     public void Should_Execute_Commands(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
+        Client clt = new(firstNames, lastNames);
         var command = new TouchStoneCompoundCommand();
         command.SetClient(clt);
         command.Execute();
@@ -19,9 +19,9 @@ public sealed class TouchStoneCompoundCommandTests
 
     [TestCase("Romain Pierre", "Michel Tiago", 311)]
     [TestCase("Diego Armando", "Maradona Franco", 278)]
-    public void Should_Execute__Not_Reduced_Commands(string firstNames, string lastNames, int expectedResult)
+    public void Should_Execute_Not_Reduced_Commands(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
+        Client clt = new(firstNames, lastNames);
         var command = new TouchStoneCompoundCommand(false);
         command.SetClient(clt);
 
@@ -32,7 +32,7 @@ public sealed class TouchStoneCompoundCommandTests
     [Test]
     public void Should_Not_Execute_Commands()
     {
-        Client clt = new(new DateOnly(), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
+        Client clt = new(string.Empty, string.Empty);
 
         var command = new ExpressionStoneCompoundCommand();
         command.SetClient(clt);

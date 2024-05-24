@@ -19,10 +19,21 @@ public sealed class LifePathStoneCommandTests
                            CultureInfo.InvariantCulture,
                            DateTimeStyles.None,
                            out var birthDate);
-        Client clt = new(new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
+        Client clt = new(new DateOnly(birthDate.Year, birthDate.Month, birthDate.Day));
         var command = new LifePathStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
+    }
+
+    [Test]
+    public void Should_Not_Execute_Command_Without_BirthDate()
+    {
+        Client clt = new(string.Empty,string.Empty);
+        var command = new LifePathStoneCommand() { Client = clt };
+
+        Check.ThatCode(() => command.Execute())
+               .Throws<InvalidOperationException>()
+               .WithMessage("The birthdate is null.");
     }
 
     [Test]

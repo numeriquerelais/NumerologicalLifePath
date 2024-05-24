@@ -15,7 +15,7 @@ public sealed class SummitStoneCommandTests
     [TestCase("John", "Doe", 10)]
     public void Should_Execute_Command(string firstNames, string lastNames, int expectedResult)
     {
-        Client clt = new(new DateOnly(), [.. firstNames.Split(" ")], [.. lastNames.Split(" ")]);
+        Client clt = new(firstNames, lastNames);
         var command = new SummitStoneCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
@@ -24,7 +24,7 @@ public sealed class SummitStoneCommandTests
     [Test]
     public void Should_Not_Execute_Command()
     {
-        Client clt = new(new DateOnly(), [.. string.Empty.Split(" ")], [.. string.Empty.Split(" ")]);
+        Client clt = new(string.Empty, string.Empty);
 
         var command = new SummitStoneCommand() { Client = clt };
 

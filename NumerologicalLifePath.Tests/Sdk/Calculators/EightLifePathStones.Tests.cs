@@ -21,12 +21,7 @@ public sealed class EightLifePathStonesTests
         int expectedWishStone)
     {
         var calculator = new EightLifePathStones();
-        var results = calculator.Calculate(
-            new Client(
-                new DateOnly(year, month, day)
-,
-                [.. firstNames.Split(" ")],
-                [.. lastNames.Split(" ")]));
+        var results = calculator.Calculate(new Client(new DateOnly(year, month, day), firstNames, lastNames));
 
         Dictionary<string, short> expectedResults = new()
     {
@@ -57,12 +52,7 @@ public sealed class EightLifePathStonesTests
         string expectedWishStone)
     {
         var calculator = new EightLifePathStones();
-        var results = calculator.CalculateStones(
-            new Client(
-                new DateOnly(year, month, day)
-,
-                [.. firstNames.Split(" ")],
-                [.. lastNames.Split(" ")]));
+        var results = calculator.CalculateStones(new Client(new DateOnly(year, month, day), firstNames, lastNames));
 
         Dictionary<string, string> expectedResults = new()
     {

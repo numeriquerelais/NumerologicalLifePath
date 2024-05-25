@@ -5,8 +5,8 @@ Usage:
   testhost lifePath [options]
 
 Options:
-  -f, --firstName <firstName> (REQUIRED)  The first names separated by "," and wrapped by '"'.
-  -l, --lastName <lastName> (REQUIRED)    The last names separated by "," and wrapped by '"'."
+  -f, --firstName <firstName> (REQUIRED)  The first names separated by ' ' and wrapped by '"'.
+  -l, --lastName <lastName> (REQUIRED)    The last names separated by ' ' and wrapped by '"'.
   -d, --birthDate <birthDate> (REQUIRED)  The birthday date dd/MM/yyyy.
   -?, -h, --help                          Show help and usage information
 

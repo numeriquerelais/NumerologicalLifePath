@@ -13,11 +13,11 @@ public sealed class EightLifePathStonesCliCommand : ThreeOptionsCliCommandWrappe
                 "Command to get the 8 life path stones.",
                 new Option<string>(
                     name: "--firstName",
-                    description: "The first names separated by \",\" and wrapped by '\"'."
+                    description: "The first names separated by ' ' and wrapped by '\"'."
                 ) { IsRequired = true },
                 new Option<string>(
                     name: "--lastName",
-                    description: "The last names separated by \",\" and wrapped by '\"'.\""
+                    description: "The last names separated by ' ' and wrapped by '\"'."
                 )
                 { IsRequired = true },
                 new Option<DateOnly>(
@@ -31,7 +31,7 @@ public sealed class EightLifePathStonesCliCommand : ThreeOptionsCliCommandWrappe
                 { IsRequired = true },
                 delegate (string firstNames, string lastNames, DateOnly birthdate)
                 {
-                    var clt = new Client(birthdate, firstNames, lastNames, ",");
+                    var clt = new Client(birthdate, firstNames, lastNames, " ");
                     var calculator = new EightLifePathStones();
                     var digits = calculator.Calculate(clt);
                     var infos = string.Join("\r\n",

@@ -28,7 +28,7 @@ public class BirthDateResonanceStonesCliCommand : SingleCliCommandWrapper<DateOn
                     var digits = calculator.Calculate(birthdate);
                     var infos = string.Join("\r\n",
                         digits.Select(digit => $" - {digit.Key} : {digit.Value} - {digit.Value.ConvertToStone()}"));
-                    Console.WriteLine($"The BirthDate Resonance Stones are : \r\n{infos}");
+                    Console.WriteLine($"The Resonance Stones for the birthdate {birthdate.ToString("dd/MM/yyyy")} are : \r\n{infos}");
                 },
                 "-d"
         ))

@@ -1,8 +1,8 @@
 ﻿namespace NumerologicalLifePath.Sdk.Abstractions;
 
-public abstract class ACalculator(Calculator calculator)
+public abstract class ACalculator(ShortsCalculator calculator)
 {
-    protected readonly Calculator _calculator = calculator;
+    protected readonly ShortsCalculator _calculator = calculator;
 
     public Dictionary<string, short> Calculate(Client clt)
     {

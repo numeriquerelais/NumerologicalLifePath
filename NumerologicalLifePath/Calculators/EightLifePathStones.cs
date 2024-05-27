@@ -7,7 +7,7 @@ namespace NumerologicalLifePath.Sdk.Calculators;
 public sealed class EightLifePathStones : ACalculator
 {
     public EightLifePathStones() :
-        base(new Calculator([
+        base(new ShortsCalculator([
             new FoundationStoneCommand(),
             new SummitStoneCommand(),
             new LifePathStoneCommand(),

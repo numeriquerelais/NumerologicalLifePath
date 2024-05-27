@@ -2,7 +2,7 @@
 
 namespace NumerologicalLifePath.Sdk.Commands.InclusionGrid;
 
-public sealed class InclusionGridStoneCommand() : ACommand<short[]>()
+public sealed class InclusionGridCommand() : ACommand<short[]>()
 {
     public override void Execute()
     {

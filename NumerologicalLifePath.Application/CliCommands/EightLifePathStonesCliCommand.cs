@@ -36,7 +36,7 @@ public sealed class EightLifePathStonesCliCommand : ThreeOptionsCliCommandWrappe
                     var digits = calculator.Calculate(clt);
                     var infos = string.Join("\r\n",
                         digits.Select(digit => $" - {digit.Key} : {digit.Value} - {digit.Value.ConvertToStone()}"));
-                    Console.WriteLine($"The life path stones of {string.Join(" ",firstNames)} {string.Join(" ", lastNames)} born on {birthdate.ToString("dd/MM/yyyy")} are : \r\n{infos}");
+                    Console.WriteLine($"The life path stones of {string.Join(" ", firstNames)} {string.Join(" ", lastNames)} born on {birthdate:dd/MM/yyyy} are : \r\n{infos}");
                 },
                 ["-f","-l", "-d"]
         ))

@@ -6,7 +6,7 @@ namespace NumerologicalLifePath.Sdk.Calculators;
 public sealed class BirthDateResonanceStones : ACalculator
 {
     public BirthDateResonanceStones() :
-        base(new Calculator([
+        base(new ShortsCalculator([
             new GlobalResonanceStoneCommand(),
             new MoonResonanceStoneCommand(),
             new SunResonanceStoneCommand(),

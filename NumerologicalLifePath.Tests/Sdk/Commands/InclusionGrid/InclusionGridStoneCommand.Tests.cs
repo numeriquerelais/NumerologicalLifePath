@@ -16,7 +16,7 @@ public sealed class InclusionGridStoneCommandTests
     public void Should_Execute_Command(string firstNames, string lastNames, short[] expectedResult)
     {
         Client clt = new(firstNames, lastNames);
-        var command = new InclusionGridStoneCommand() { Client = clt };
+        var command = new InclusionGridCommand() { Client = clt };
         command.Execute();
         Check.That(command.Result).Equals(expectedResult);
     }
@@ -26,7 +26,7 @@ public sealed class InclusionGridStoneCommandTests
     {
         Client clt = new(new DateOnly());
 
-        var command = new InclusionGridStoneCommand() { Client = clt };
+        var command = new InclusionGridCommand() { Client = clt };
 
         Check.ThatCode(() => command.Execute())
                .Throws<ArgumentException>()
@@ -36,7 +36,7 @@ public sealed class InclusionGridStoneCommandTests
     [Test]
     public void Should_Not_Execute_Command_Without_Client()
     {
-        var command = new InclusionGridStoneCommand();
+        var command = new InclusionGridCommand();
 
         Check.ThatCode(() => { command.Execute(); })
             .Throws<InvalidOperationException>()

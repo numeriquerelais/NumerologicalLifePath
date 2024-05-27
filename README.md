@@ -49,6 +49,7 @@ NumerologicalLifePath.Application birthStones -d "15/02/1955"
 ### Grille d'inclusion
 [Grille d'inclusion](https://kabalistik.com/apprendre/1-abrege-de-numerologie.html)
 [Grille d'inclusion 2](https://www.numerologueconseils.com/index.php/articles-de-numerologie-gratuite/2-non-categorise/24-l-inclusion-la-cle-numerologique)
+[Grille d'inclusion 2](https://www.myrddinshome.fr/numerologie-nom-2/)
 
 ## Ressources complémentaires
 ### Documentation technique

@@ -1,9 +1,9 @@
 ﻿The life path stones are : 
- - FoundationStone : 7 - Citrine
- - SummitStone : 10 - Rhodochrosite
+ - FoundationStone : 19 - Topaz
+ - SummitStone : 24 - Amazonite
  - LifePathStone : 19 - Topaz
  - CallingStone : 8 - Obsidian
  - PersonnalityStone : 14 - Amethyst
  - ExpressionStone : 13 - Hematite
- - TouchStone : 16 - Opal
- - WishStone : 14 - Amethyst
+ - TouchStone : 6 - Garnet
+ - WishStone : 26 - Pyrite

@@ -1,0 +1,12 @@
+﻿Description:
+  Command to get the inclusion grid.
+
+Usage:
+  testhost inclusionGrid [options]
+
+Options:
+  -f, --firstName <firstName> (REQUIRED)  The first names separated by ' ' and wrapped by '"'.
+  -l, --lastName <lastName> (REQUIRED)    The last names separated by ' ' and wrapped by '"'.
+  -?, -h, --help                          Show help and usage information
+
+

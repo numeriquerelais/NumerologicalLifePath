@@ -27,6 +27,12 @@ public class Cli
                 continue;
             }
 
+            if (cmd is InclusionGridCliCommand inclusionGrid)
+            {
+                AddCommand(inclusionGrid);
+                continue;
+            }
+
             throw new ArgumentException($"Not supported command type {cmd.GetType().Name}.");
         }
     }
@@ -55,6 +61,19 @@ public class Cli
             wrapper.Option
         );
 
+    }
+
+    private void AddCommand<T1, T2>(TwoOptionsCliCommandWrapper<T1, T2> wrapper)
+    {
+        var cmd = new Command(wrapper.CommandName, wrapper.Description);
+        cmd.AddOption(wrapper.Option1);
+        cmd.AddOption(wrapper.Option2);
+
+        RootCommand.AddCommand(cmd);
+        cmd.SetHandler(
+            (arg1, arg2) => wrapper.Handle(arg1!, arg2!),
+            wrapper.Option1, wrapper.Option2
+        );
     }
 
     private void AddCommand<T1, T2, T3>(ThreeOptionsCliCommandWrapper<T1, T2, T3> wrapper)

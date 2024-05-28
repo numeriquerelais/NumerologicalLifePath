@@ -181,4 +181,33 @@ public sealed class CliTests
             .WithMessage("Cannot parse argument '1955,02,15' as expected type 'System.DateOnly'.");
     }
 
+    [Test, Category("E2E")]
+    public async Task Should_Display_Help_Of_InclusionGrid_Command_Approval_Test()
+    {
+        var cli = new Cli([
+            new InclusionGridCliCommand()
+        ]);
+
+        var args = ConverToArgsArray("inclusionGrid -h");
+
+        await cli.StartAsync(args);
+
+        Approvals.Verify(_writer.ToString());
+    }
+
+
+    [Test, Category("E2E")]
+    public async Task Should_Execute_InclusionGrid_Command_Approval_Test()
+    {
+        var cli = new Cli([
+            new InclusionGridCliCommand()
+        ]);
+
+        var args = ConverToArgsArray("inclusionGrid -f Marc#Luc#Matthieu#Jean -l Dubuisson#Laforêt");
+
+        await cli.StartAsync(args);
+
+        Approvals.Verify(_writer.ToString());
+    }
+
 }

@@ -1,8 +1,16 @@
 {
-  "profiles": {
-    "NumerologicalLifePath.Application": {
-        "commandName": "Project",
-        "commandLineArgs": "lifePath -f \"Simon Roger\" -l \"Federer Connors\" -d \"15/02/1955\" "
+    "profiles": {
+        "NumerologicalApp.LifePath": {
+            "commandName": "Project",
+            "commandLineArgs": "lifePath -f \"Simon Roger\" -l \"Federer Connors\" -d \"15/02/1955\""
+        },
+        "NumerologicalApp.BirthStone": {
+            "commandName": "Project",
+            "commandLineArgs": "birthStones -d 1955-02-15"
+        },
+        "NumerologicalApp.InclusionGrid": {
+            "commandName": "Project",
+            "commandLineArgs": "inclusionGrid -f \"Marc Luc Matthieu Jean\" -l \"Dubuisson Laforêt\""
+        }
     }
-  }
 }

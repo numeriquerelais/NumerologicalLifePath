@@ -9,7 +9,7 @@ Le but de ce projet est de prendre du plaisir, d'apprendre et de faire un travai
 - Les règles de calcul numérologique à partir de la date de naissance et des noms et prénoms d'une personne pour déterminer :
   - [x] les pierres de son chemin de vie 
   - [x] les chiffres en résonance vibratoire avec sa date de naissance
-  - [ ] la grille d'inclusion
+  - [x] la grille d'inclusion
 - Découvrir :
   - [x] la mise en place dans github d'une CI à partir de github actions
 	- [x] dependabot
@@ -30,6 +30,13 @@ NumerologicalLifePath.Application lifePath -f "Simon Roger" -l "Federer Connors"
 NumerologicalLifePath.Application birthStones -d "15/02/1955"
 ```
 - -d : la date de naissance au format jj/MM/AAAA
+
+### Calcul de la grille d'inclusion
+```cmd
+NumerologicalLifePath.Application inclusionGrid -f \"Marc Luc Matthieu Jean\" -l \"Dubuisson Laforêt\"
+```
+- -f : la liste des prénoms séparés par un espace
+- -l : la liste de noms de famille (nom du père, nom de la mère) séparés par un espace
 
 ## Règles
 ### Table de correspondance lettre - chiffre

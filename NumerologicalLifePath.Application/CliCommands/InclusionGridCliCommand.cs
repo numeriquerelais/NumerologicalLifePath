@@ -3,6 +3,7 @@ using NumerologicalLifePath.Application.CliCommands.Wrappers;
 using NumerologicalLifePath.Sdk;
 using NumerologicalLifePath.Sdk.Calculators;
 using System.CommandLine;
+using System.Text;
 
 namespace NumerologicalLifePath.Application.CliCommands;
 
@@ -27,12 +28,12 @@ public sealed class InclusionGridCliCommand : TwoOptionsCliCommandWrapper<string
                     var calculator = new InclusionGrid();
                     var digits = calculator.Calculate(clt);
                     var separator = "|";
-                    var infos = separator;
+                    var infos = new StringBuilder(separator);
 
                     for (int i = 0; i < digits.Length; i++) {
-                        infos += $" {digits[i]} {separator}";
+                        infos.Append($" {digits[i]} {separator}");
                         if ((i + 1) % 3 == 0 && i!=8) {
-                            infos += "\r\n|";
+                            infos.Append("\r\n|");
                         } 
                     }
 

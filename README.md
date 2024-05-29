@@ -19,7 +19,7 @@ Le but de ce projet est de prendre du plaisir, d'apprendre et de faire un travai
 ## Utilisation
 ### Calcul des pierres du chemin de vie
 ```cmd
-NumerologicalLifePath.Application lifePath -f "Simon Roger" -l "Federer Connors" -d "15/02/1955"
+NumerologicalTool lifePath -f "Simon Roger" -l "Federer Connors" -d "15/02/1955"
 ```
 - -f : la liste des prénoms séparés par un espace
 - -l : la liste de noms de famille (nom du père, nom de la mère) séparés par un espace
@@ -27,13 +27,13 @@ NumerologicalLifePath.Application lifePath -f "Simon Roger" -l "Federer Connors"
 
 ### Calcul des chiffres en résonance vibratoire avec sa date de naissance
 ```cmd
-NumerologicalLifePath.Application birthStones -d "15/02/1955"
+NumerologicalTool birthStones -d "15/02/1955"
 ```
 - -d : la date de naissance au format jj/MM/AAAA
 
 ### Calcul de la grille d'inclusion
 ```cmd
-NumerologicalLifePath.Application inclusionGrid -f \"Marc Luc Matthieu Jean\" -l \"Dubuisson Laforêt\"
+NumerologicalTool inclusionGrid -f \"Marc Luc Matthieu Jean\" -l \"Dubuisson Laforêt\"
 ```
 - -f : la liste des prénoms séparés par un espace
 - -l : la liste de noms de famille (nom du père, nom de la mère) séparés par un espace
@@ -64,6 +64,8 @@ NumerologicalLifePath.Application inclusionGrid -f \"Marc Luc Matthieu Jean\" -l
 [Command Line](https://learn.microsoft.com/fr-fr/dotnet/standard/commandline/get-started-tutorial)
 [Clean CLI](https://github.com/NikiforovAll/clean-cli-todo-example/tree/main/src/CleanCli.Todo.Console)
 [ApprovalTests tutoial](https://lassiautio.com/2018/03/18/approvaltests-one-of-my-favorite-nuget/)
+[Publish .Net Artifact](https://elanderson.net/2020/06/github-use-actions-to-publish-artifacts/)
+[Publish .Net Artifact 2](https://github.com/bcr/dotnet-actions-gitflow)
 
 ### Sonar Cloud
 [SonarCloud Coverage failed](https://community.sonarsource.com/t/test-coverage-always-on-0-net-core-github-action/64347/11)

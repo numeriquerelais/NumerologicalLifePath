@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RepositoryUrl>https://github.com/numeriquerelais/NumerologicalLifePath</RepositoryUrl>
+    <AssemblyName>NumerologicalTool</AssemblyName>
   </PropertyGroup>	
 	
   <ItemGroup>

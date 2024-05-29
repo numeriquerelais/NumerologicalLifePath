@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumerologicalLifePath.Tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extra", "Extra", "{F2B06FEC-E8FA-45FB-A468-E1B0BD51BB8B}"
 	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.md = CHANGELOG.md
 		.config\dotnet-tools.json = .config\dotnet-tools.json
 		README.md = README.md
 		stryker-config.json = stryker-config.json
@@ -25,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflow", "workflow", "{E9
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\CI.yml = .github\workflows\CI.yml
 		.github\workflows\QuickBuildCI.yml = .github\workflows\QuickBuildCI.yml
+		.github\workflows\Release.yml = .github\workflows\Release.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{51D11A57-C66D-4D45-89E0-D839C8B45BF6}"

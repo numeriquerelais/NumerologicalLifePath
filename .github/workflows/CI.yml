@@ -90,7 +90,7 @@ jobs:
 
       - name: Stryker mutator analyze
         env:
-         STRYKER_TOKEN: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+          STRYKER_TOKEN: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
         shell: powershell
         working-directory: ${{ github.workspace }}
         run: dotnet stryker --reporter dashboard --dashboard-api-key ${{ env.STRYKER_TOKEN }}

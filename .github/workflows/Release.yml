@@ -11,13 +11,18 @@ concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
 
+permissions: 
+  contents: write
+
 env:
   DOTNET_VERSION: '8.0.204' # The .NET SDK version to use
-  ARTIFACT_NAME : 'NumerologicalTool'
-  PROJECT_NAME : 'NumerologicalLifePath.Application'
+  ARTIFACT_NAME: 'NumerologicalTool'
+  PROJECT_NAME: 'NumerologicalLifePath.Application'
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PUBLISH_PATH : './publish'
 
 jobs:
-  publish:
+   _:
     runs-on: windows-latest
 
     steps:
@@ -28,18 +33,65 @@ jobs:
       with:
        dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Install tools and restore
-      run: dotnet restore
-
     - name: Build & Publish
       shell: powershell
       run: |
         $version =  ("${{ github.ref_name }}").TrimStart("v")
-        dotnet build --configuration Release --no-restore -p:Version=$version
-        dotnet publish ${{ env.PROJECT_NAME }} -c Release -r win-x64 --self-contained -p:PublishReadyToRun=true -p:PublishSingleFile=true --self-contained true -p:UseAppHost=true -o publish
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
+        dotnet publish ${{ env.PROJECT_NAME }} -c Release -r win-x64 --self-contained -p:PublishReadyToRun=true -p:Version=$version -p:PublishSingleFile=true --self-contained true -p:UseAppHost=true -o ${{ env.PUBLISH_PATH }}
+   
+    - name: Create Zip File
+      uses: papeloto/action-zip@v1
       with:
-        name: ${{ env.ARTIFACT_NAME }}-${{ github.ref_name }}
-        path: publish
+        files: ${{ env.PUBLISH_PATH }}/${{ env.ARTIFACT_NAME }}.exe
+        dest: ${{ env.PUBLISH_PATH }}/${{ env.ARTIFACT_NAME }}.zip
+
+    - name: Create release
+      uses: softprops/action-gh-release@v2
+      id: create_release
+      env:
+         GITHUB_TOKEN: ${{ github.token }}
+      with:
+        draft: false
+        prerelease: true
+        body_path: CHANGELOG.md
+        
+    - name: Add Release Asset
+      uses: csexton/release-asset-action@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        file: ${{ env.PUBLISH_PATH }}/${{ env.ARTIFACT_NAME }}.zip
+        release-url: ${{ steps.create_release.outputs.upload_url }}
+
+    # - name: Upload Release Asset
+    #   id: upload-release-asset 
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+    #     asset_path: ./publish/${{ env.ARTIFACT_NAME }}.exe
+    #     asset_name: ${{ env.ARTIFACT_NAME }}.exe
+    #     asset_content_type: application/octet-stream
+
+    # - name: Upload windows artifact
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ github.token }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+    #     asset_path: publish
+    #     asset_name: ${{ env.ARTIFACT_NAME }}-${{ github.ref_name }}.zip
+    #     asset_content_type: application/zip
+
+    # - name: Upload Release Asset
+    #   id: upload-release-asset 
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+    #     asset_path: ./publish
+    #     asset_name: ${{ env.ARTIFACT_NAME }}.zip
+    #     asset_content_type: application/zip
+
+    

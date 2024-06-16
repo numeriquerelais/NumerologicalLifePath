@@ -1,0 +1,23 @@
+﻿# .github/release.yml
+
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+  categories:
+    - title: Fonctionnalités
+      labels:
+        - enhancement
+    - title: Corrections
+      labels:
+        - bug
+    - title : Mise à jour de dépendances
+      authors:
+        - dependabot
+    - title: Outillage
+      labels:
+        - tool
+        - CI/CD 
+    - title: Divers
+      labels:
+        - "*"

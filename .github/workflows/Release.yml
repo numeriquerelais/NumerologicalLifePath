@@ -27,7 +27,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -54,7 +54,7 @@ jobs:
       with:
         draft: false
         prerelease: true
-        body_path: CHANGELOG.md
+        generate_release_notes: true
         
     - name: Add Release Asset
       uses: csexton/release-asset-action@v2

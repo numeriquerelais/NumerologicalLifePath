@@ -33,6 +33,13 @@ NumerologicalTool birthStones -d "15/02/1955"
 
 ### Calcul de la grille d'inclusion
 ```cmd
+NumerologicalLifePath.Application inclusionGrid -f \"Marc Luc Matthieu Jean\" -l \"Dubuisson Laforêt\"
+```
+- -f : la liste des prénoms séparés par un espace
+- -l : la liste de noms de famille (nom du père, nom de la mère) séparés par un espace
+
+### Calcul de la grille d'inclusion
+```cmd
 NumerologicalTool inclusionGrid -f \"Marc Luc Matthieu Jean\" -l \"Dubuisson Laforêt\"
 ```
 - -f : la liste des prénoms séparés par un espace

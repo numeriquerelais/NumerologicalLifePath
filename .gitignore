@@ -3,3 +3,4 @@
 */obj/*
 /coverage.xml
 /NumerologicalLifePath.Tests/Application/*.received.txt
+/publish/*

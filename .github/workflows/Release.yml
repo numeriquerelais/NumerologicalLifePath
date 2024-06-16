@@ -2,10 +2,8 @@ name: release
 
 on:
   workflow_dispatch:
-  push:
+  create:
     tags: [ 'v*.*.*' ]
-    branches:
-      - main
 
 concurrency:
   group: ${{ github.ref }}

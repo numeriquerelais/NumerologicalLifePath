@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.2
+_Publication 16/06/2024_
+## Divers :
+- Correction orthographe
+
 ## v0.1.1
 _Publication 29/05/2024_
 ### Fonctionnalités :

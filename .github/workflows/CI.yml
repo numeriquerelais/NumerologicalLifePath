@@ -2,13 +2,9 @@ name: build, test and analyze v2
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [ main ]
-    paths:
-    - '**.cs'
-    - '**.csproj'
-    tags-ignore:
-    - 'v*.*.*' 
+  pull_request_review:
+    types:
+    - submitted
 
 concurrency:
   group: ${{ github.ref }}

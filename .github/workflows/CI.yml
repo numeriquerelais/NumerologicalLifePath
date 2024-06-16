@@ -6,12 +6,17 @@ on:
     branches: [ main ]
     paths:
     - '**.cs'
-    - '**.csproj'
+    - '**.csproj'    
+    tags-ignore:
+    - 'v*.*.*'
+
   pull_request:
     branches: [ main ]
     paths:
     - '**.cs'
     - '**.csproj'
+    tags-ignore:
+    - 'v*.*.*' 
 
 concurrency:
   group: ${{ github.ref }}

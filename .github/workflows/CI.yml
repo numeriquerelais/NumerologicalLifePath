@@ -2,14 +2,6 @@ name: build, test and analyze v2
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-    - '**.cs'
-    - '**.csproj'    
-    tags-ignore:
-    - 'v*.*.*'
-
   pull_request:
     branches: [ main ]
     paths:

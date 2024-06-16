@@ -37,7 +37,7 @@ public sealed class InclusionGridCliCommand : TwoOptionsCliCommandWrapper<string
                         } 
                     }
 
-                    Console.WriteLine($"The inclusion grid of {string.Join(" ", firstNames)} {string.Join(" ", lastNames)} are : \r\n{infos}");
+                    Console.WriteLine($"The inclusion grid of {string.Join(" ", firstNames)} {string.Join(" ", lastNames)} is : \r\n{infos}");
                 },
                 ["-f", "-l"]
         ))
